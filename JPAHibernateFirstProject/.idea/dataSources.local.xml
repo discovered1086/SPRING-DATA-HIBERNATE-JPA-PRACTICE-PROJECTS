@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="hibernate.cfg.xml/Hibernate" uuid="e9e1f4c7-9876-40b5-a82f-514f7598a7d7">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <user-name>jpa_training</user-name>
+    </data-source>
+    <data-source name="JPAProject/Hibernate" uuid="28f2e683-5066-41fe-9247-8591906096be">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+      <user-name>jpa_training</user-name>
+    </data-source>
+  </component>
+</project>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0"
+                 xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+
+    <entity class="jpahibernate.model.Employee">
+        <named-query name="findMyEmployee">
+            <query>
+                <![CDATA[
+					select employee.name, employee.designation  from Employee employee where employee.employeeId=:Id
+				]]>
+            </query>
+        </named-query>
+
+        <named-query name="CountTotalEmployeeIds">
+            <query>
+                <![CDATA[
+					select count(employee.employeeId)  from Employee employee
+				]]>
+            </query>
+        </named-query>
+
+        <!--<named-query name="findBothEmployerAndDepartment">
+            <query>
+                <![CDATA[
+					select employee.employeeId, employee.name, employee.designation, department.departmentName
+					from Employee employee join employee.department department
+					where department.departmentId=:departmentId
+				]]>
+            </query>
+        </named-query>-->
+
+        <named-query name="findBothEmployerAndDepartment">
+            <query>
+                <![CDATA[
+					select employee, department
+					from Employee employee join fetch employee.department department
+					where employee.employeeId=:employeeId
+				]]>
+            </query>
+        </named-query>
+    </entity>
+
+    <entity class="jpahibernate.model.Department"  >
+        <!--<named-query name="findBothDepartmentAndEmployee">
+        <query>
+            <![CDATA[
+					select department
+					from Department  department join fetch department.employeeList employee
+					where department.departmentId=:departmentId
+				]]>
+        </query>
+        </named-query>-->
+        <named-query name="findBothDepartmentAndEmployee">
+            <query>
+                <![CDATA[
+					select department
+					from Department  department
+					where department.departmentId=:departmentId
+				]]>
+            </query>
+        </named-query>
+    </entity>
+
+</entity-mappings>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN">
+<hibernate-mapping package="bookstore.model.dao">
+    <class table="HELLO_WORLD" name="HelloWorld">
+        <id name="id" >
+            <column name="ID" />
+            <generator class="sequence" >
+                <param name="sequence">practice_sequence</param>
+            </generator>
+        </id>
+        <property name="text" column="TEXT" type="string"/>
+    </class>
+</hibernate-mapping>
