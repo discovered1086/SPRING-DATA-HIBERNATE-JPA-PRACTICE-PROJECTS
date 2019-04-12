@@ -1,6 +1,5 @@
 package commonutility;
 
-import com.kingshuk.hibernate.cognizanttraining.models.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -16,13 +15,7 @@ public class CognizantHibernateUtilUpdated extends HibernateUtil {
                     .setProperty("hibernate.connection.username", "jpa_training")
                     .setProperty("hibernate.connection.password", "Iofdtiger#16")
                     .setProperty("hibernate.show_sql", "true")
-                    .setProperty("hibernate.hbm2ddl.auto", "update")
-                    .addAnnotatedClass(BookInventory.class)
-                    .addAnnotatedClass(BookCustomerCompositeKey.class)
-                    .addAnnotatedClass(CustomerAddress.class)
-                    .addAnnotatedClass(Customer.class)
-                    .addAnnotatedClass(BookIssue.class)
-                    .addAnnotatedClass(Reservation.class);
+                    .setProperty("hibernate.hbm2ddl.auto", "update");
         }catch(Exception ex){
             ex.printStackTrace();
         }
