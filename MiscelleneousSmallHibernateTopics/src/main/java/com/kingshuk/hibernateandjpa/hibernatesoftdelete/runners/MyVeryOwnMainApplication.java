@@ -1,4 +1,4 @@
-package com.kingshuk.hibernateandjpa.runners;
+package com.kingshuk.hibernateandjpa.hibernatesoftdelete.runners;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
