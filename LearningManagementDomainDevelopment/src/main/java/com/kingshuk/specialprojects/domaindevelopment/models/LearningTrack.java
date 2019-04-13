@@ -35,7 +35,7 @@ import lombok.NoArgsConstructor;
 public class LearningTrack {
 
 	@Id
-	@Column(length = 20, name = "TRACK_ID", updatable = false, insertable = false)
+	@Column(length = 20, name = "TRK_ID", updatable = false, insertable = false)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "trackSequenceGen")
 	@GenericGenerator(name = "trackSequenceGen",
 		strategy = "com.kingshuk.specialprojects.domaindevelopment.models.sequencegenerators.CommonSequenceGenerator",
@@ -46,18 +46,18 @@ public class LearningTrack {
 		}	)
 	private String trackId;
 	
-	@Column(name = "TRACK_TITLE", length = 30, nullable = false)
+	@Column(name = "TRK_TTL", length = 30, nullable = false)
 	private String trackTitle;
 	
-	@Column(name = "TRACK_DESC", length = 1000, nullable = false)
+	@Column(name = "TRK_DESC", length = 1000, nullable = false)
 	private String trackDescription;
 	
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
-    @JoinColumn(name = "PARENT_TRACK_ID", referencedColumnName = "TRACK_ID")
+    @JoinColumn(name = "PRNT_TRK_ID", referencedColumnName = "TRACK_ID")
 	private List<LearningTrack> subTracks;
     
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH })
-	@JoinTable(joinColumns = @JoinColumn(name = "TRACK_ID", referencedColumnName = "TRACK_ID"),
-			   inverseJoinColumns = @JoinColumn(name = "TOPIC_ID", referencedColumnName = "TOPIC_ID"))
+	@JoinTable(joinColumns = @JoinColumn(name = "TRK_ID", referencedColumnName = "TRK_ID"),
+			   inverseJoinColumns = @JoinColumn(name = "TPC_ID", referencedColumnName = "TPC_ID"))
 	private List<LearningTopic> learningTopics;
 }

@@ -1,5 +1,7 @@
 package com.kingshuk.specialprojects.domaindevelopment.models;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -30,8 +34,8 @@ public class LearningResource {
 
 	@Id
 	@Column(length = 30, name = "RES_ID", updatable = false, insertable = false)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "trackSequenceGen")
-	@GenericGenerator(name = "trackSequenceGen", 
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "resourceSequenceGen")
+	@GenericGenerator(name = "resourceSequenceGen", 
 	strategy = "com.kingshuk.specialprojects.domaindevelopment.models.sequencegenerators.CommonSequenceGenerator", 
 	parameters = {
 			@Parameter(name = CommonSequenceGenerator.INCREMENT_PARAM, value = "1"),
@@ -48,4 +52,5 @@ public class LearningResource {
 	@OneToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(nullable = false, name = "RES_TYPE_ID", referencedColumnName = "RES_TYPE_ID")
 	private LearningResourceType resourceType;
+	
 }

@@ -32,8 +32,8 @@ public class LearningTopicType {
 
 	@Id
 	@Column(length = 10, name = "TPC_TYP_ID", updatable = false, insertable = false)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "trackSequenceGen")
-	@GenericGenerator(name = "trackSequenceGen", strategy = "com.kingshuk.specialprojects.domaindevelopment.models.sequencegenerators.CommonSequenceGenerator", parameters = {
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "topicTypeSeq")
+	@GenericGenerator(name = "topicTypeSeq", strategy = "com.kingshuk.specialprojects.domaindevelopment.models.sequencegenerators.CommonSequenceGenerator", parameters = {
 			@Parameter(name = CommonSequenceGenerator.INCREMENT_PARAM, value = "1"),
 			@Parameter(name = CommonSequenceGenerator.VALUE_PREFIX_PARAM, value = "TPCTYP"),
 			@Parameter(name = CommonSequenceGenerator.NUMBER_FORMAT_PARAM, value = "%03d") })

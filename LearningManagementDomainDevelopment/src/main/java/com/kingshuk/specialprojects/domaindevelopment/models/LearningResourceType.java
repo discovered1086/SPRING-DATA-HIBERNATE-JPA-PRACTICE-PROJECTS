@@ -27,26 +27,28 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "RESOURCE_TYPE")
 @NamedQuery(name = "selectTopicTypeQuery", 
-	query = "SELECT a FROM LearningResourceType as a")
+	query = "SELECT a FROM LearningResourceType a")
 public class LearningResourceType {
 
 	@Id
 	@Column(length = 10, name = "RES_TYPE_ID", updatable = false, insertable = false)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "trackSequenceGen")
-	@GenericGenerator(name = "trackSequenceGen", strategy = "com.kingshuk.specialprojects.domaindevelopment.models.sequencegenerators.CommonSequenceGenerator", parameters = {
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "resourceTypeSequenceGen")
+	@GenericGenerator(name = "resourceTypeSequenceGen", strategy = "com.kingshuk.specialprojects.domaindevelopment.models.sequencegenerators.CommonSequenceGenerator", parameters = {
 			@Parameter(name = CommonSequenceGenerator.INCREMENT_PARAM, value = "1"),
 			@Parameter(name = CommonSequenceGenerator.VALUE_PREFIX_PARAM, value = "RESTYP"),
 			@Parameter(name = CommonSequenceGenerator.NUMBER_FORMAT_PARAM, value = "%03d") })
 	private String resourceTypeId;
 
-	@Column(name = "RES_TYP_CD", length = 20, nullable = false, unique = true)
+	@Column(name = "RES_TYP_CD", length = 6, nullable = false, unique = true)
 	@Enumerated(EnumType.STRING)
 	private LearningResourceTypeCode resourceTypeCode;
 
-	@Column(name = "RES_TYP_NM", length = 30, nullable = false)
+	@Column(name = "RES_TYP_NM", length = 20, nullable = false)
 	private String resourceTypeName;
 
 	@Column(name = "RES_TYP_DESC", length = 100, nullable = false)
 	private String resourceTypeDescription;
+	
+	private LearningResourceLocation location;
 
 }
