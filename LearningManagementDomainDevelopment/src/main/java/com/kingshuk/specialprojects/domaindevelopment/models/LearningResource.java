@@ -53,4 +53,7 @@ public class LearningResource {
 	@JoinColumn(nullable = false, name = "RES_TYPE_ID", referencedColumnName = "RES_TYPE_ID")
 	private LearningResourceType resourceType;
 	
+	@Column(name = "RES_CONSMP_INSTRCTN", length = 4000, nullable = false)
+	private String resourceConsumptionIntruction;
+	
 }

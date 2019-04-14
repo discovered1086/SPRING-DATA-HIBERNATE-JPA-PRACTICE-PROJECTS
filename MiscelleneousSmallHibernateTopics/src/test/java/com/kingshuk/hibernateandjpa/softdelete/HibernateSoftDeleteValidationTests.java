@@ -1,4 +1,4 @@
-package com.kingshuk.hibernateandjpa;
+package com.kingshuk.hibernateandjpa.softdelete;
 
 import static org.junit.Assert.assertNull;
 
@@ -32,7 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Slf4j
-public class MiscelleneousSmallHibernateTopicsApplicationTests {
+public class HibernateSoftDeleteValidationTests {
 
 	@Autowired
 	private EntityManagerFactory entityManagerFactory;
