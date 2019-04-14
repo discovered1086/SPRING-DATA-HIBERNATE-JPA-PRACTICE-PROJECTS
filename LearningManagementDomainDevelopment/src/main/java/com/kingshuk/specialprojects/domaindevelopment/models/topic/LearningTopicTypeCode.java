@@ -1,4 +1,4 @@
-package com.kingshuk.specialprojects.domaindevelopment.models;
+package com.kingshuk.specialprojects.domaindevelopment.models.topic;
 
 public enum LearningTopicTypeCode {
 	RSRCH, ISSRSLTN,

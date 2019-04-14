@@ -11,6 +11,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.kingshuk.specialprojects.domaindevelopment.models.topic.LearningTopic;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -42,7 +44,7 @@ public class LearningTrack extends LearningItem{
 //	private String trackDescription;
 	
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
-    @JoinColumn(name = "PRNT_TRK_ID", referencedColumnName = "TRACK_ID")
+    @JoinColumn(name = "PRNT_LRNITM_ID", referencedColumnName = "LRN_ITM_ID")
 	private List<LearningTrack> subTracks;
     
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH })

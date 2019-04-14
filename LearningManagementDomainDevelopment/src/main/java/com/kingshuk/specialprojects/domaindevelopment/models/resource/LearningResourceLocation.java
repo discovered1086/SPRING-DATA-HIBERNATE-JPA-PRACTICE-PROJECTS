@@ -1,4 +1,4 @@
-package com.kingshuk.specialprojects.domaindevelopment.models;
+package com.kingshuk.specialprojects.domaindevelopment.models.resource;
 
 public class LearningResourceLocation {
 	

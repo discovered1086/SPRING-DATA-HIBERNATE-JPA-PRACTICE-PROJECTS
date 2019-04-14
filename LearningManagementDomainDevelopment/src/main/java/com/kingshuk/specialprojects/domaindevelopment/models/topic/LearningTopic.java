@@ -1,4 +1,4 @@
-package com.kingshuk.specialprojects.domaindevelopment.models;
+package com.kingshuk.specialprojects.domaindevelopment.models.topic;
 
 import java.util.List;
 
@@ -8,8 +8,12 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.kingshuk.specialprojects.domaindevelopment.models.LearningItem;
+import com.kingshuk.specialprojects.domaindevelopment.models.resource.LearningResource;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -47,4 +51,8 @@ public class LearningTopic extends LearningItem{
 	@JoinTable(joinColumns = @JoinColumn(name = "TPC_ID", referencedColumnName = "TPC_ID"),
 			   inverseJoinColumns = @JoinColumn(name = "RES_ID", referencedColumnName = "RES_ID"))
 	private List<LearningResource> learningResources;
+	
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
+    @JoinColumn(name = "PRNT_LRNITM_ID", referencedColumnName = "PRNT_LRNITM_ID")
+	private List<LearningTopic> subTopics;
 }
