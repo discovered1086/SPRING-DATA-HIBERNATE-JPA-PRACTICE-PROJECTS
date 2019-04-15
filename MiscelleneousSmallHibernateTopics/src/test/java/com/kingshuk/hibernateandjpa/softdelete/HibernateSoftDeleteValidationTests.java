@@ -8,7 +8,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.kingshuk.hibernateandjpa.hibernatesoftdelete.model.Account;
+import com.kingshuk.hibernateandjpa.utility.ConfigurationUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,23 +34,34 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest
+//@SpringBootTest
 @Slf4j
 public class HibernateSoftDeleteValidationTests {
 
 	@Autowired
-	private EntityManagerFactory entityManagerFactory;
+	private SessionFactory sessionFactory;
+
+	@Before
+	public void setUp() {
+		Configuration configuration = ConfigurationUtil.getConfiguration();
+
+		if(configuration != null) {
+			configuration.addAnnotatedClass(Account.class);
+			
+			sessionFactory = configuration.buildSessionFactory();
+		}
+	}
 
 	@After
 	public void closeEntityManagerFactory() {
-		entityManagerFactory.close();
+		sessionFactory.close();
 	}
 
 	@Test
 	public void testSoftDelete() {
 		log.info("Starting soft delete test......");
 
-		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		EntityManager entityManager = sessionFactory.createEntityManager();
 
 		entityManager.getTransaction().begin();
 
@@ -77,7 +92,7 @@ public class HibernateSoftDeleteValidationTests {
 
 		}
 
-		entityManager = entityManagerFactory.createEntityManager();
+		entityManager = sessionFactory.createEntityManager();
 		
 		entityManager.getTransaction().begin();
 		

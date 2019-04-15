@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import com.kingshuk.specialprojects.domaindevelopment.models.resource.LearningResource;
 import com.kingshuk.specialprojects.domaindevelopment.models.sequencegenerators.CommonSequenceGenerator;
 import com.kingshuk.specialprojects.domaindevelopment.models.topic.LearningTopic;
 
@@ -59,4 +60,9 @@ public class LearningTrack{
 	@JoinTable(joinColumns = @JoinColumn(name = "TRK_ID", referencedColumnName = "TRK_ID"),
 			   inverseJoinColumns = @JoinColumn(name = "TPC_ID", referencedColumnName = "TPC_ID"))
 	private List<LearningTopic> learningTopics;
+    
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH })
+	@JoinTable(joinColumns = @JoinColumn(name = "TPC_ID", referencedColumnName = "TPC_ID"),
+			   inverseJoinColumns = @JoinColumn(name = "RES_ID", referencedColumnName = "RES_ID"))
+	private List<LearningResource> learningResources;
 }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import com.kingshuk.hibernateandjpa.hibernatesoftdelete.model.Account;
 import com.kingshuk.hibernateandjpa.hibernatesoftdelete.repositories.AccountRepository;
 
-@Component
+//@Component
 public class MyVeryOwnMainApplication implements CommandLineRunner {
 
 	@Autowired
