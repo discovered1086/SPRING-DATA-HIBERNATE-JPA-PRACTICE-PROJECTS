@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,10 +41,10 @@ public class Book {
 
 	private String title;
 
-//	@ManyToMany
-//	@JoinTable(name = "AUTHOR_BOOK_GROUP_MKC", joinColumns = {
-//			@JoinColumn(name = "fk_group", referencedColumnName = "id") }, inverseJoinColumns = {
-//					@JoinColumn(name = "fk_author", referencedColumnName = "id") })
-//	@Builder.Default
-//	private List<Author> authors = new ArrayList<>();
+	@ManyToMany
+	@JoinTable(name = "AUTHOR_BOOK_GROUP_MKC", joinColumns = {
+			@JoinColumn(name = "fk_group", referencedColumnName = "id") }, inverseJoinColumns = {
+					@JoinColumn(name = "fk_author", referencedColumnName = "id") })
+	@Builder.Default
+	private List<Author> authors = new ArrayList<>();
 }

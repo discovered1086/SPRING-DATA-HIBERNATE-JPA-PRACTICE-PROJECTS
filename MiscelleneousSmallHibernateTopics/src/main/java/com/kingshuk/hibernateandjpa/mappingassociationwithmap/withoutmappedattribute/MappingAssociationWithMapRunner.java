@@ -28,7 +28,7 @@ public class MappingAssociationWithMapRunner implements ApplicationRunner {
 		b.setTitle("Hibernate Tips");
 		//b.setFormat(Format.PAPERBACK);
 		b.setSequenceNumber(1);
-		//b.getAuthors().add(a);
+		b.getAuthors().add(a);
 		
 		bookRepository.save(b);
 		
@@ -36,7 +36,7 @@ public class MappingAssociationWithMapRunner implements ApplicationRunner {
 		b1.setTitle("Hibernate Books");
 		//b.setFormat(Format.PAPERBACK);
 		b1.setSequenceNumber(2);
-		//b1.getAuthors().add(a);
+		b1.getAuthors().add(a);
 		
 		bookRepository.save(b1);
 

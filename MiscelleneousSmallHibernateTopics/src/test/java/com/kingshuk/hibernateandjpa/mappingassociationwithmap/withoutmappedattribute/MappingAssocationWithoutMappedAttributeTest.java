@@ -66,12 +66,13 @@ public class MappingAssocationWithoutMappedAttributeTest {
 
 		entityManager.getTransaction().begin();
 
-		/*TypedQuery<Author> q = entityManager
-				.createQuery("SELECT a FROM Author a JOIN a.books b where a.id = :id", Author.class);
-		q.setParameter("id", 33L);
+		TypedQuery<Author> q = entityManager
+				.createQuery("SELECT a FROM Author a JOIN a.books b", Author.class);
+				//.createQuery("SELECT a FROM Author a JOIN a.books b where a.id = :id", Author.class);
+		//q.setParameter("id", 33L);
 		
-		Author author = q.getSingleResult();*/
-		Author author = entityManager.find(Author.class, 33L);
+		Author author = q.getSingleResult();
+		//Author author = entityManager.find(Author.class, 33L);
 		
 		assertNotNull(author);
 		
