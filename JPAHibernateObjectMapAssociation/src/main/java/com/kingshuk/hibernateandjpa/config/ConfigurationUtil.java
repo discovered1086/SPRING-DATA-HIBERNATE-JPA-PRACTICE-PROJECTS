@@ -1,11 +1,7 @@
-package com.kingshuk.hibernateandjpa.collectionmapping.configuration;
+package com.kingshuk.hibernateandjpa.config;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
-import com.kingshuk.hibernateandjpa.collectionmapping.entities.Address;
-import com.kingshuk.hibernateandjpa.collectionmapping.entities.Role;
-import com.kingshuk.hibernateandjpa.collectionmapping.entities.UserProfile;
 
 
 
@@ -15,7 +11,7 @@ public class ConfigurationUtil {
 		
 	}
 
-	public static SessionFactory buildSessionFactory() {
+	public static Configuration getConfiguration() {
 		Configuration configuration = null;
 
 		try {
@@ -28,16 +24,12 @@ public class ConfigurationUtil {
 					.setProperty("hibernate.connection.password", "Iofdtiger#16")
 					.setProperty("hibernate.show_sql", "true")
 					.setProperty("hibernate.hbm2ddl.auto", "update")
-					.setProperty("hibernate.format_sql", "true")
-					.addAnnotatedClass(UserProfile.class)
-					.addAnnotatedClass(Address.class)
-					.addAnnotatedClass(Role.class);
-					
+					.setProperty("hibernate.format_sql", "true");
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 
-		return configuration != null ? configuration.buildSessionFactory() : null;
+		return configuration;
 	}
 
 }
