@@ -52,7 +52,7 @@ public class LearningTopic{
 
 	@OneToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(nullable = false, name = "TPC_TYP_ID", referencedColumnName = "TPC_TYP_ID")
-	private LearningTopicType topicType;
+	private LearningTopicCategory topicType;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH })
 	@JoinTable(joinColumns = @JoinColumn(name = "TPC_ID", referencedColumnName = "TPC_ID"),

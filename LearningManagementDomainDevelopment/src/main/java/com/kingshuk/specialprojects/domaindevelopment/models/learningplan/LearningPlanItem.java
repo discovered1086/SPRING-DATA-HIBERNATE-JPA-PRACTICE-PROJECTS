@@ -2,11 +2,11 @@ package com.kingshuk.specialprojects.domaindevelopment.models.learningplan;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -14,8 +14,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
-import com.kingshuk.specialprojects.domaindevelopment.models.LearningItem;
-import com.kingshuk.specialprojects.domaindevelopment.models.LearningItem.LearningItemBuilder;
+import com.kingshuk.specialprojects.domaindevelopment.models.learningactivity.LearningStatusType;
 import com.kingshuk.specialprojects.domaindevelopment.models.resource.LearningResource;
 import com.kingshuk.specialprojects.domaindevelopment.models.sequencegenerators.CommonSequenceGenerator;
 
@@ -40,6 +39,9 @@ public class LearningPlanItem {
 			@Parameter(name = CommonSequenceGenerator.VALUE_PREFIX_PARAM, value = "LRNPLNITM"),
 			@Parameter(name = CommonSequenceGenerator.NUMBER_FORMAT_PARAM, value = "%020d") })
 	private String planItemId;
+	
+	/*@Column(name = "LRN_SEQ", length = 10, nullable = false)
+	private Integer learningSequenceNum;*/
 
 	@OneToMany
 	@JoinColumn(nullable = false, name = "LRN_RES_ID", referencedColumnName = "RES_ID")
@@ -47,4 +49,8 @@ public class LearningPlanItem {
 	
 	@Column(name = "LRN_INSTRCTNS", columnDefinition = "VARCHAR2(4000)")
 	private String learningInstructions;
+	
+	@Column(name = "LRN_ITM_STTS")
+	@Enumerated(EnumType.STRING)
+	private LearningStatusType status;
 }

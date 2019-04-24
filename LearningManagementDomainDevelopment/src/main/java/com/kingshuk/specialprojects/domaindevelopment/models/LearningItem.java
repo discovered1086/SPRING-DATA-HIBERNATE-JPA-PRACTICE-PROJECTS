@@ -27,14 +27,14 @@ import lombok.NoArgsConstructor;
 public class LearningItem {
 
 	@Id
-	@Column(length = 20, name = "LRN_ITM_ID", updatable = false, insertable = false)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "topicSequenceGen")
-	@GenericGenerator(name = "topicSequenceGen", 
+	@Column(length = 26, name = "LRN_ITM_ID", updatable = false, insertable = false)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "learningItemSeq")
+	@GenericGenerator(name = "learningItemSeq",
 	strategy = "com.kingshuk.specialprojects.domaindevelopment.models.sequencegenerators.CommonSequenceGenerator", 
 	parameters = {
 			@Parameter(name = CommonSequenceGenerator.INCREMENT_PARAM, value = "1"),
-			@Parameter(name = CommonSequenceGenerator.VALUE_PREFIX_PARAM, value = "TPC"),
-			@Parameter(name = CommonSequenceGenerator.NUMBER_FORMAT_PARAM, value = "%015d") })
+			@Parameter(name = CommonSequenceGenerator.VALUE_PREFIX_PARAM, value = "LRNITM"),
+			@Parameter(name = CommonSequenceGenerator.NUMBER_FORMAT_PARAM, value = "%020d") })
 	private String topicId;
 
 	@Column(name = "LRN_ITM_TTLE", length = 60, nullable = false)

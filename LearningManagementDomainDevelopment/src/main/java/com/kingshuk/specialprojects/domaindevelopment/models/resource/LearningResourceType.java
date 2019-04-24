@@ -39,16 +39,14 @@ public class LearningResourceType {
 			@Parameter(name = CommonSequenceGenerator.NUMBER_FORMAT_PARAM, value = "%03d") })
 	private String resourceTypeId;
 
-	@Column(name = "RES_TYP_CD", length = 6, nullable = false, unique = true)
-	@Enumerated(EnumType.STRING)
-	private LearningResourceTypeCode resourceTypeCode;
-
 	@Column(name = "RES_TYP_NM", length = 20, nullable = false)
 	private String resourceTypeName;
 
-	@Column(name = "RES_TYP_DESC", length = 100, nullable = false)
+	@Column(name = "RES_TYP_DESC", columnDefinition = "VARCHAR2(2000)", nullable = false)
 	private String resourceTypeDescription;
 	
+	@Column(name = "RES_LOC", columnDefinition = "VARCHAR2(10)", nullable = false)
+	@Enumerated(EnumType.STRING)
 	private LearningResourceLocation location;
 
 }

@@ -1,7 +1,5 @@
 package com.kingshuk.specialprojects.domaindevelopment.models.resource;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -53,7 +49,10 @@ public class LearningResource {
 	@JoinColumn(nullable = false, name = "RES_TYPE_ID", referencedColumnName = "RES_TYPE_ID")
 	private LearningResourceType resourceType;
 	
-	@Column(name = "RES_CONSMP_INSTRCTN", length = 4000, nullable = false)
+	@Column(name = "RES_CONSMP_INSTRCTN", columnDefinition = "VARCHAR2(4000)", nullable = false)
 	private String resourceConsumptionIntruction;
+	
+	@Column(name = "RES_LOC", columnDefinition = "VARCHAR2(2000)", nullable = false)
+	private String resourceLocation;
 	
 }

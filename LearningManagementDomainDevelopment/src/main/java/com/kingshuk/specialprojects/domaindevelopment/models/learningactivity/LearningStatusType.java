@@ -1,5 +1,5 @@
 package com.kingshuk.specialprojects.domaindevelopment.models.learningactivity;
 
-public enum LearningActivityType {
+public enum LearningStatusType {
 	COMPLETED, IN_PROGRESS, NOT_STARTED
 }

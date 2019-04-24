@@ -1,33 +1,28 @@
 package com.kingshuk.specialprojects.domaindevelopment.models.learningactivity;
 
 import java.time.ZonedDateTime;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
-import org.hibernate.annotations.Type;
 
-import com.kingshuk.specialprojects.domaindevelopment.models.LearningItem;
 import com.kingshuk.specialprojects.domaindevelopment.models.sequencegenerators.CommonSequenceGenerator;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 @Data
 @Builder
@@ -52,11 +47,5 @@ public class CommonLearningActivity {
 	@Column(name = "ACTVTY_DT", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private ZonedDateTime activityTime;
-	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "LRN_ITM_ID", referencedColumnName = "LRN_ITM_ID")
-	private LearningItem learningItem;
-	
-	
 	
 }

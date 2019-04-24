@@ -1,6 +1,5 @@
 package com.kingshuk.specialprojects.domaindevelopment.models.resource;
 
-public class LearningResourceLocation {
-	
-	private Long resourceLocationId;
+public enum LearningResourceLocation {
+	ONLINE, OFFLINE
 }

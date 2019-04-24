@@ -1,0 +1,36 @@
+{
+	"id": 0,
+	"version": 0,
+	"firstName": "Kingshuk",
+	"lastName": "Mukherjee",
+	"addressMap": {
+		"LEISURE": {
+			"addressLine1": "30 Edwards St",
+			"addressLine2": "",
+			"city": "Manchester",
+			"state": "CT",
+			"zipCode": "06106"
+		},
+		"BUSINESS": {
+			"addressLine1": "600 Asylum Avenue",
+			"addressLine2": "Apt - 316",
+			"city": "Hartford",
+			"state": "CT",
+			"zipCode": "06105"
+		},
+		"PRIVATE": {
+			"addressLine1": "771 Shady Grove Ln",
+			"addressLine2": "",
+			"city": "Buffalo Grove",
+			"state": "IL",
+			"zipCode": "60089"
+		},
+		"SUMMER": {
+			"addressLine1": "2 Park Pl",
+			"addressLine2": "Apt - 16C",
+			"city": "Hartford",
+			"state": "CT",
+			"zipCode": "061056"
+		}
+	}
+}
