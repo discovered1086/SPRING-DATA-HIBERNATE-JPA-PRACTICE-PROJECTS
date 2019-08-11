@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Type;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -32,7 +32,7 @@ public class CreditBasedAccountStatement extends AccountStatement {
 	private double paymentDue;
 	
 	@Column(name="PYMNT_DUE_DT")
-	@Temporal(TemporalType.DATE)
+	@Type(type="org.hibernate.type.ZonedDateTimeType")
 	private ZonedDateTime paymentDueDate;
 
 }

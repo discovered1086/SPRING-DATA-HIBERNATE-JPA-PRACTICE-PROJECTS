@@ -54,4 +54,7 @@ public class Account implements Serializable {
 
 	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "account")
 	private List<Transaction> transactionList;
+	
+	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+	private List<AccountFees> accountFeesList;
 }

@@ -1,6 +1,7 @@
 package com.financemanagement.domaindevelopment.model;
 
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -32,10 +34,24 @@ public class Category implements Serializable {
 	strategy = "com.financemanagement.domaindevelopment.sequencegenerators.CategorySequenceGenerator")
 	private String categoryId;
 
-	@Column(length = 60, name = "category_name")
+	@Column(length = 60, name = "CTGRY_NM")
 	private String categoryName;
 
-	@Column(length = 100, name = "category_description")
+	@Column(length = 100, name = "CTGRY_DESC")
 	private String categoryDesc;
+	
+	@Column(length = 60, name = "SB_CTGRY_NM")
+	private String subCategoryName;
+
+	@Column(length = 100, name = "SB_CTGRY_DESC")
+	private String subCategoryDescription;
+	
+	@Column(name="CTGRY_EFFCTV_DT")
+	@Type(type="org.hibernate.type.ZonedDateTimeType")
+	private ZonedDateTime categoryEffectiveDate;
+	
+	@Column(name="CTGRY_TRMNTN_DT")
+	@Type(type="org.hibernate.type.ZonedDateTimeType")
+	private ZonedDateTime categoryTerminationDate;
 
 }
