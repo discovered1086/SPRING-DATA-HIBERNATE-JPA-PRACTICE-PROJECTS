@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +20,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.financemanagement.domaindevelopment.enums.BankAccountType;
+import com.financemanagement.domaindevelopment.enums.Currency;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -57,4 +62,8 @@ public class Account implements Serializable {
 	
 	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
 	private List<AccountFees> accountFeesList;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="ACC_CRNCY")
+	private Currency currency;
 }
