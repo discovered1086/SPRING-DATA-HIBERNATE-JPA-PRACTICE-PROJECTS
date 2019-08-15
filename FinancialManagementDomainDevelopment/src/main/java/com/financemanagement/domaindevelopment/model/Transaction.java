@@ -6,6 +6,8 @@ import java.time.ZonedDateTime;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +17,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
+
+import com.financemanagement.domaindevelopment.enums.Currency;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,7 +37,7 @@ public class Transaction implements Serializable{
 	private static final long serialVersionUID = -7817135024822644549L;
 
 	@Id
-	@Column(length = 25, name = "transaction_id")
+	@Column(length = 25, name = "TRNSCTN_ID")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "transactionSequenceGenerator")
 	@GenericGenerator(name="transactionSequenceGenerator", 
 	strategy="com.financemanagement.domaindevelopment.sequencegenerators.TransactionSequenceGenerator")
@@ -49,6 +53,13 @@ public class Transaction implements Serializable{
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "category_id", referencedColumnName = "category_id", nullable = false)
 	private Category transactionCategory;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="TRN_CRNCY")
+	private Currency transactionCurrency;
+	
+	@Column(name="TRN_AMT", columnDefinition = "NUMBER(20,2)" )
+	private double transactionAmount;
 	
 	
 	/*

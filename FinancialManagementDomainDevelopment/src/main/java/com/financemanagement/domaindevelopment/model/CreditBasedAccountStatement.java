@@ -1,11 +1,15 @@
 package com.financemanagement.domaindevelopment.model;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
@@ -34,5 +38,9 @@ public class CreditBasedAccountStatement extends AccountStatement {
 	@Column(name="PYMNT_DUE_DT")
 	@Type(type="org.hibernate.type.ZonedDateTimeType")
 	private ZonedDateTime paymentDueDate;
+	
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+	@JoinColumn(name = "INTRST_RTE_ID", referencedColumnName = "INTRST_RCRD_ID")
+	private List<InterestOnCreditAccount> interestRates;
 
 }

@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -48,14 +49,17 @@ public class Account implements Serializable {
 
 	@Column(length = 50, name = "account_number")
 	private String accountNumber;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="ACC_CRNCY")
+	private Currency currency;
 
 	@Column(length = 100, name = "account_title")
 	private String accountDesc;
 
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE,
 			CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false)
-	private Customer accountHolder;
+	private CustomerPortfolio customerPortfolio;
 
 	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "account")
 	private List<Transaction> transactionList;
@@ -63,7 +67,5 @@ public class Account implements Serializable {
 	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
 	private List<AccountFees> accountFeesList;
 	
-	@Enumerated(EnumType.STRING)
-	@Column(name="ACC_CRNCY")
-	private Currency currency;
+	
 }

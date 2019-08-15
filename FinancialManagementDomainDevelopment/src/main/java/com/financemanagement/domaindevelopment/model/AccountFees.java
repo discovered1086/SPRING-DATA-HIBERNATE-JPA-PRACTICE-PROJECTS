@@ -13,6 +13,7 @@ import org.hibernate.annotations.Type;
 
 import com.financemanagement.domaindevelopment.enums.AccountFeeFrequency;
 import com.financemanagement.domaindevelopment.enums.AccountFeeType;
+import com.financemanagement.domaindevelopment.enums.Currency;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -38,6 +39,10 @@ public class AccountFees implements Serializable{
 	
 	@Column(name="FEE_AMT", columnDefinition = "NUMBER(20,2)" )
 	private double feeAmount;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="FEE_CRNCY")
+	private Currency feeCurrency;
 	
 	@Column(name="FEE_EFFCTV_DT")
 	@Type(type="org.hibernate.type.ZonedDateTimeType")
