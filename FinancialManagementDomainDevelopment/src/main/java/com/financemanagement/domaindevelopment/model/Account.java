@@ -14,13 +14,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import com.financemanagement.domaindevelopment.enums.Currency;
+import com.financemanagement.domaindevelopment.sequencegenerators.CommonSequenceGenerator;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -28,7 +31,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "account")
+@Table(name = "CUSTOMER_ACCOUNT")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Account implements Serializable {
 
@@ -40,8 +43,11 @@ public class Account implements Serializable {
 	@Id
 	@Column(length = 20, name = "ACCT_ID", updatable = false, insertable = false)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "accSequenceGen")
-	@GenericGenerator(name = "accSequenceGen", 
-	strategy = "com.financemanagement.domaindevelopment.sequencegenerators.AccountSequenceGenerator")
+	@GenericGenerator(name = "accSequenceGen",
+	strategy = "com.financemanagement.domaindevelopment.sequencegenerators.CommonSequenceGenerator", 
+	parameters = {
+			@Parameter(name = CommonSequenceGenerator.INCREMENT_PARAM, value = "1"),
+			@Parameter(name = CommonSequenceGenerator.VALUE_PREFIX_PARAM, value = "ACCT") })
 	private String accountId;
 
 	@Column(length = 50, name = "account_number")
@@ -61,7 +67,9 @@ public class Account implements Serializable {
 	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "account")
 	private List<Transaction> transactionList;
 	
+	
 	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+	@JoinColumn(name = "CUST_ACCT_ID", referencedColumnName = "ACCT_ID", nullable = false)
 	private List<AccountFees> accountFeesList;
 	
 	

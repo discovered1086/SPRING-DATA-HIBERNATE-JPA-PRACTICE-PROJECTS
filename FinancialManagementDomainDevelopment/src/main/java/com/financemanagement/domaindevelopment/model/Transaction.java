@@ -16,17 +16,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 
 import com.financemanagement.domaindevelopment.enums.Currency;
 import com.financemanagement.domaindevelopment.enums.TransactionType;
+import com.financemanagement.domaindevelopment.sequencegenerators.CommonSequenceGenerator;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity(name = "transaction")
-@Table(name = "account_transaction")
+@Table(name = "TRANSACTION_MSTR")
 @NoArgsConstructor
 @Getter
 @Setter
@@ -38,10 +40,13 @@ public class Transaction implements Serializable{
 	private static final long serialVersionUID = -7817135024822644549L;
 
 	@Id
-	@Column(length = 25, name = "TRNSCTN_ID")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "transactionSequenceGenerator")
-	@GenericGenerator(name="transactionSequenceGenerator", 
-	strategy="com.financemanagement.domaindevelopment.sequencegenerators.TransactionSequenceGenerator")
+	@Column(length = 50, name = "TRNSCTN_ID")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "transactionSeqGen")
+	@GenericGenerator(name = "transactionSeqGen",
+	strategy = "com.financemanagement.domaindevelopment.sequencegenerators.CommonSequenceGenerator", 
+	parameters = {
+			@Parameter(name = CommonSequenceGenerator.INCREMENT_PARAM, value = "1"),
+			@Parameter(name = CommonSequenceGenerator.VALUE_PREFIX_PARAM, value = "TRN") })
 	private String transactionId;
 	
 	@Enumerated(EnumType.STRING)

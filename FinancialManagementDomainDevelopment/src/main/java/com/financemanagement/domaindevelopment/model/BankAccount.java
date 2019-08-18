@@ -19,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="bank_account")
+@Table(name="BANK_ACCOUNT")
 public class BankAccount extends Account{
 	
 	/**
@@ -29,14 +29,14 @@ public class BankAccount extends Account{
 	
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name="account_type")
+	@Column(name="ACCT_TYP")
 	private BankAccountType accountType;
 	
-	@Column(name="account_balance", columnDefinition = "NUMBER(20,2)" )
+	@Column(name="ACCT_BLNC", columnDefinition = "NUMBER(20,2)" )
 	private double accountBalance;
 	
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-	@JoinColumn(name = "ACCT_STMNT_ID", referencedColumnName = "ACCT_STMNT_ID")
+	@JoinColumn(name = "CUST_ACCT_ID", referencedColumnName = "ACCT_ID", nullable = false)
 	private List<DebitBasedAccountStatement> accountStatements;
 
 }

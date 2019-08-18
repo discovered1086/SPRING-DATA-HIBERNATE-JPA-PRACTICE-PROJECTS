@@ -13,16 +13,19 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
+
+import com.financemanagement.domaindevelopment.sequencegenerators.CommonSequenceGenerator;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "ACCT_STMNT")
+@Table(name = "CUSTOMER_ACCOUNT_STATEMENT")
 @Getter
 @Setter
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class AccountStatement implements Serializable{
 
 	/**
@@ -31,10 +34,13 @@ public class AccountStatement implements Serializable{
 	private static final long serialVersionUID = -864888275514254560L;
 	
 	@Id
-	@Column(length = 20, name = "ACCT_STMNT_ID", updatable = false, insertable = false)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "accSequenceGen")
-	@GenericGenerator(name = "accSequenceGen", 
-	strategy = "com.financemanagement.domaindevelopment.sequencegenerators.AccountSequenceGenerator")
+	@Column(length = 30, name = "ACCT_STMNT_ID", updatable = false, insertable = false)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "accStatementSequenceGen")
+	@GenericGenerator(name = "accStatementSequenceGen",
+	strategy = "com.financemanagement.domaindevelopment.sequencegenerators.CommonSequenceGenerator", 
+	parameters = {
+			@Parameter(name = CommonSequenceGenerator.INCREMENT_PARAM, value = "1"),
+			@Parameter(name = CommonSequenceGenerator.VALUE_PREFIX_PARAM, value = "STMNT") })
 	private String accountStatementId;
 	
 	@Column(name="STMNT_STRT_DT")
@@ -44,5 +50,9 @@ public class AccountStatement implements Serializable{
 	@Column(name="STMNT_END_DT")
 	@Type(type="org.hibernate.type.ZonedDateTimeType")
 	private ZonedDateTime statementPeriodEndDate;
+	
+	@Column(name="STMNT_GNRTN_DT")
+	@Type(type="org.hibernate.type.ZonedDateTimeType")
+	private ZonedDateTime statementGenerationDate;
 
 }

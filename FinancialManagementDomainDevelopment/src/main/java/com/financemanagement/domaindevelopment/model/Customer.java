@@ -15,6 +15,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import com.financemanagement.domaindevelopment.sequencegenerators.CommonSequenceGenerator;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -33,8 +36,11 @@ public class Customer implements Serializable {
 	@Id
 	@Column(length = 20, name = "CSTMR_ID", updatable = false, insertable = false)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customerSeqGen")
-	@GenericGenerator(name = "customerSeqGen", 
-	strategy = "com.financemanagement.domaindevelopment.sequencegenerators.CustomerSequenceGenerator")
+	@GenericGenerator(name = "categorySequenceGen",
+	strategy = "com.financemanagement.domaindevelopment.sequencegenerators.CommonSequenceGenerator", 
+	parameters = {
+			@Parameter(name = CommonSequenceGenerator.INCREMENT_PARAM, value = "1"),
+			@Parameter(name = CommonSequenceGenerator.VALUE_PREFIX_PARAM, value = "CSTMR") })
 	private String customerId;
 	
 	@Column(length = 40, name = "FRST_NM")
@@ -52,7 +58,7 @@ public class Customer implements Serializable {
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE,
 							CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinTable(name = "CUSTOMER_ADDRESS_MAPPING", joinColumns = {
-			@JoinColumn(name = "customer_id") }, inverseJoinColumns = { @JoinColumn(name = "address_id") })
+			@JoinColumn(name = "CSTMR_ID") }, inverseJoinColumns = { @JoinColumn(name = "ADDRSS_ID") })
 	private Set<Address> addressList;
 
 }

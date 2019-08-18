@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "DEBIT_ACCT_STMNT")
+@Table(name = "DEBIT_ACCONT_STATEMENT")
 @Getter
 @Setter
 public class DebitBasedAccountStatement extends AccountStatement {

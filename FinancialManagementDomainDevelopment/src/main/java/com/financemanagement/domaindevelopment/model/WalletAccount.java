@@ -40,6 +40,9 @@ public class WalletAccount extends Account {
 	@Column(name="ACCT_BLNC", columnDefinition = "NUMBER(20,2)" )
 	private double accountBalance;
 	
+	@Column(name = "ACCT_STMNT_ID", length = 30)
+	private String accountStatementId;
+	
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	@JoinColumn(name = "ACCT_STMNT_ID", referencedColumnName = "ACCT_STMNT_ID")
 	private List<DebitBasedAccountStatement> accountStatements;

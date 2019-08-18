@@ -16,7 +16,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
+
+import com.financemanagement.domaindevelopment.sequencegenerators.CommonSequenceGenerator;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,9 +37,12 @@ public class BudgetEstimate implements Serializable{/**
 	
 	@Id
 	@Column(length = 20, name = "BDGT_EST_ID", updatable = false, insertable = false)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "accSequenceGen")
-	@GenericGenerator(name = "accSequenceGen", 
-	strategy = "com.financemanagement.domaindevelopment.sequencegenerators.AccountSequenceGenerator")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "budgetSequenceGen")
+	@GenericGenerator(name = "budgetSequenceGen",
+	strategy = "com.financemanagement.domaindevelopment.sequencegenerators.CommonSequenceGenerator", 
+	parameters = {
+			@Parameter(name = CommonSequenceGenerator.INCREMENT_PARAM, value = "1"),
+			@Parameter(name = CommonSequenceGenerator.VALUE_PREFIX_PARAM, value = "BDGT") })
 	private String budgetEstimateId;
 	
 	@Column(name="BDGT_STRT_DT")

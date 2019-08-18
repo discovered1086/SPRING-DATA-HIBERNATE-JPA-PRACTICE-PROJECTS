@@ -8,18 +8,18 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "CREDIT_CARD_ACCOUNT_STATEMENT")
+@Table(name = "LOAN_ACCOUNT_STATEMENT")
 @Getter
 @Setter
-public class CreditCardAccountStatement extends CreditBasedAccountStatement {
+public class LoanAccountStatement extends CreditBasedAccountStatement {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1429470525693291853L;
 
-	@Column(name="STMNT_BLNC", columnDefinition = "NUMBER(20,2)" )
-	private double statementBalance;
+	@Column(name="PY_OFF_AMT", columnDefinition = "NUMBER(20,2)" )
+	private double payOffAmount;
 	
 	@Column(name="MIN_PYMNT_DUE", columnDefinition = "NUMBER(20,2)" )
 	private double minimumPaymentDue;
