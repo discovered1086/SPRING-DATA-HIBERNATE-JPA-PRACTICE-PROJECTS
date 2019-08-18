@@ -19,6 +19,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import com.financemanagement.domaindevelopment.enums.Currency;
+import com.financemanagement.domaindevelopment.enums.TransactionType;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,16 +43,20 @@ public class Transaction implements Serializable{
 	@GenericGenerator(name="transactionSequenceGenerator", 
 	strategy="com.financemanagement.domaindevelopment.sequencegenerators.TransactionSequenceGenerator")
 	private String transactionId;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="TRN_TYP")
+	private TransactionType transactionType;
 
-	@Column(length = 1000, name = "description")
+	@Column(length = 1000, name = "TRN_DSCRPTN")
 	private String description;
 
 	@ManyToOne
-	@JoinColumn(name = "account_id", referencedColumnName = "account_id", nullable = false)
+	@JoinColumn(name = "TRN_ACCT_ID", referencedColumnName = "ACCT_ID", nullable = false)
 	private Account account;
 
 	@ManyToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "category_id", referencedColumnName = "category_id", nullable = false)
+	@JoinColumn(name = "CTGRY_ID", referencedColumnName = "CTGRY_ID", nullable = false)
 	private Category transactionCategory;
 	
 	@Enumerated(EnumType.STRING)
@@ -66,7 +71,7 @@ public class Transaction implements Serializable{
 	 * I just found out that @Temporal can only be used
 	 * with java.util.Date or java.sql.Date
 	 */
-	@Column(name = "transaction_date", columnDefinition="TIMESTAMP")
+	@Column(name = "TRN_DT", columnDefinition="TIMESTAMP")
 	@Type(type="org.hibernate.type.ZonedDateTimeType")
 	private ZonedDateTime transactionDate;
 	

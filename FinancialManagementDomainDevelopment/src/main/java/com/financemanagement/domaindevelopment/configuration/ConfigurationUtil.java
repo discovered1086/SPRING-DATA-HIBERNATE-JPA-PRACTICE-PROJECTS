@@ -4,7 +4,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import com.financemanagement.domaindevelopment.enums.BankAccountType;
-import com.financemanagement.domaindevelopment.enums.NetWork;
+import com.financemanagement.domaindevelopment.enums.CreditCardNetWork;
 import com.financemanagement.domaindevelopment.model.Account;
 import com.financemanagement.domaindevelopment.model.Address;
 import com.financemanagement.domaindevelopment.model.BankAccount;
@@ -36,7 +36,7 @@ public class ConfigurationUtil {
 					.addAnnotatedClass(BankAccount.class).addAnnotatedClass(BankAccountType.class)
 					.addAnnotatedClass(Category.class).addAnnotatedClass(CreditCardAccount.class)
 					.addAnnotatedClass(Customer.class).addAnnotatedClass(Transaction.class)
-					.addAnnotatedClass(NetWork.class);
+					.addAnnotatedClass(CreditCardNetWork.class);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

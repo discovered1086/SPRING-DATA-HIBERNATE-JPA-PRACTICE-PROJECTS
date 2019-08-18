@@ -1,6 +1,6 @@
 package com.financemanagement.domaindevelopment.enums;
 
-public enum NetWork {
+public enum CreditCardNetWork {
 	VISA,
 	MASTERCARD,
 	DISCOVER,

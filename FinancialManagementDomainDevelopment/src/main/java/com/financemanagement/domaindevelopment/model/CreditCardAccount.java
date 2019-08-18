@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
-import com.financemanagement.domaindevelopment.enums.NetWork;
+import com.financemanagement.domaindevelopment.enums.CreditCardNetWork;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -33,7 +33,7 @@ public class CreditCardAccount extends Account{
 	private String creditCardNumber;
 		
 	@Enumerated(EnumType.STRING)
-	private NetWork netWork;
+	private CreditCardNetWork netWork;
 	
 	@Column(name="credit_balance", columnDefinition= "NUMBER(10,2)")
 	private double creditBalance;
