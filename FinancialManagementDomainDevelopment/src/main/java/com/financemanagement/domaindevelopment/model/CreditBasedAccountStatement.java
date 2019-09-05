@@ -14,11 +14,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "CREDIT_ACCOUNT_STATEMENT")
+@Table(name = "CREDIT_ACCOUNT_STATEMENT_SUMMARY")
 @Getter
 @Setter
 @Inheritance(strategy = InheritanceType.JOINED)
-public class CreditBasedAccountStatement extends AccountStatement {
+public class CreditBasedAccountStatement extends AccountStatementSummary {
 
 	/**
 	 * 

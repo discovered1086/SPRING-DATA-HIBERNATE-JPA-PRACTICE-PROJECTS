@@ -22,11 +22,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "CUSTOMER_ACCOUNT_STATEMENT")
+@Table(name = "ACCOUNT_STATEMENT_SUMMARY")
 @Getter
 @Setter
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class AccountStatement implements Serializable{
+public class AccountStatementSummary implements Serializable{
 
 	/**
 	 * 

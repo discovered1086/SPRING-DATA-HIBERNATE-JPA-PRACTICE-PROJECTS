@@ -11,7 +11,7 @@ import lombok.Setter;
 @Table(name = "DEBIT_ACCONT_STATEMENT")
 @Getter
 @Setter
-public class DebitBasedAccountStatement extends AccountStatement {
+public class DebitBasedAccountStatement extends AccountStatementSummary {
 
 	/**
 	 * 
