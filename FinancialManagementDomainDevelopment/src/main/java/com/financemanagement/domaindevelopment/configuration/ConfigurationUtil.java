@@ -5,13 +5,13 @@ import org.hibernate.cfg.Configuration;
 
 import com.financemanagement.domaindevelopment.enums.BankAccountType;
 import com.financemanagement.domaindevelopment.enums.CreditCardNetWork;
-import com.financemanagement.domaindevelopment.model.Account;
-import com.financemanagement.domaindevelopment.model.Address;
-import com.financemanagement.domaindevelopment.model.BankAccount;
-import com.financemanagement.domaindevelopment.model.Category;
-import com.financemanagement.domaindevelopment.model.CreditCardAccount;
-import com.financemanagement.domaindevelopment.model.Customer;
-import com.financemanagement.domaindevelopment.model.Transaction;
+import com.financemanagement.domaindevelopment.model.AccountEntity;
+import com.financemanagement.domaindevelopment.model.AddressEntity;
+import com.financemanagement.domaindevelopment.model.BankAccountEntity;
+import com.financemanagement.domaindevelopment.model.CategoryEntity;
+import com.financemanagement.domaindevelopment.model.CreditCardAccountEntity;
+import com.financemanagement.domaindevelopment.model.CustomerEntity;
+import com.financemanagement.domaindevelopment.model.TransactionEntity;
 
 public class ConfigurationUtil {
 	
@@ -32,10 +32,10 @@ public class ConfigurationUtil {
 					.setProperty("hibernate.connection.password", "Iofdtiger#16")
 					.setProperty("hibernate.show_sql", "true")
 					.setProperty("hibernate.hbm2ddl.auto", "update")
-					.addAnnotatedClass(Account.class).addAnnotatedClass(Address.class)
-					.addAnnotatedClass(BankAccount.class).addAnnotatedClass(BankAccountType.class)
-					.addAnnotatedClass(Category.class).addAnnotatedClass(CreditCardAccount.class)
-					.addAnnotatedClass(Customer.class).addAnnotatedClass(Transaction.class)
+					.addAnnotatedClass(AccountEntity.class).addAnnotatedClass(AddressEntity.class)
+					.addAnnotatedClass(BankAccountEntity.class).addAnnotatedClass(BankAccountType.class)
+					.addAnnotatedClass(CategoryEntity.class).addAnnotatedClass(CreditCardAccountEntity.class)
+					.addAnnotatedClass(CustomerEntity.class).addAnnotatedClass(TransactionEntity.class)
 					.addAnnotatedClass(CreditCardNetWork.class);
 		} catch (Exception ex) {
 			ex.printStackTrace();
