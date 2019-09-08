@@ -18,8 +18,7 @@ public class DebitBasedAccountStatementEntity extends AccountStatementSummaryEnt
 	 */
 	private static final long serialVersionUID = 7556955442948517767L;
 	
-	@Column(name="AVLBLE_BLNC", columnDefinition = "NUMBER(20,2)" )
-	private double availableBalance;
+	
 	
 	@Column(name="OPNNG_BLNC", columnDefinition = "NUMBER(20,2)" )
 	private double openingBalance;

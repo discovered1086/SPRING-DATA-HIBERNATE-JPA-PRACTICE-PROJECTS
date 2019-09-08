@@ -37,6 +37,9 @@ public class WalletAccountEntity extends AccountEntity {
 	@Column(name = "ACC_PRVDR", length = 40)
 	private String accountProvider;
 	
+	@Column(name="AVLBLE_BLNC", columnDefinition = "NUMBER(20,2)" )
+	private double availableBalance;
+	
 	
 	@Column(name = "ACCT_STMNT_ID", length = 30)
 	private String accountStatementId;

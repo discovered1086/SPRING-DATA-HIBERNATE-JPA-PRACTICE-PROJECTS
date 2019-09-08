@@ -32,6 +32,9 @@ public class BankAccountEntity extends AccountEntity{
 	@Column(name="ACCT_TYP")
 	private BankAccountType accountType;
 	
+	@Column(name="AVLBLE_BLNC", columnDefinition = "NUMBER(20,2)" )
+	private double availableBalance;
+	
 	
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	@JoinColumn(name = "CUST_ACCT_ID", referencedColumnName = "ACCT_ID", nullable = false)

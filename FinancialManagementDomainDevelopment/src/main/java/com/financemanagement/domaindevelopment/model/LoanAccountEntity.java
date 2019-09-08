@@ -27,7 +27,7 @@ public class LoanAccountEntity extends CreditBasedAccountEntity {
 	@JoinColumn(name = "CRD_ACCT_ID", referencedColumnName = "ACCT_ID")
 	private List<CreditBasedAccountStatementEntity> accountStatements;
 	
-	@Column(name="LN_TRM", length = 10 )
-	private Integer loanTerm;
+	@Column(name="LN_TRM_MNTHS", length = 10 )
+	private Integer loanTermInMonths;
 
 }
