@@ -50,11 +50,11 @@ public class Author {
 	@JoinTable(name = "AUTHOR_BOOK_GROUP_MKC", joinColumns = {
 			@JoinColumn(name = "fk_author", referencedColumnName = "id") }, inverseJoinColumns = {
 					@JoinColumn(name = "fk_group", referencedColumnName = "id") })
-	@MapKey(name = "sequenceNumber")
+	//@MapKey(name = "sequenceNumber")
 //	@ElementCollection(fetch = FetchType.EAGER)
 //	@CollectionTable(name="AUTHOR_BOOK_GROUP_MKC")
 //	@Column(name="AUTHOR_ID")
-//	@MapKeyColumn(name="BOOK_SEQ",table = "BOOK_WITH_MKC")
+	@MapKeyColumn(name="BOOK_SEQ",table = "BOOK_WITH_MKC")
 	@Builder.Default
 	private Map<Integer, Book> books = new HashMap<>();
 

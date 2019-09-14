@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 
 
-@Component("mappingWithMapWithOutMappedAttribute")
+//@Component("mappingWithMapWithOutMappedAttribute")
 public class MappingAssociationWithMapRunner implements ApplicationRunner {
 	
 	@Autowired
