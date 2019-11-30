@@ -3,15 +3,15 @@ package com.financemanagement.domaindevelopment.configuration;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.financemanagement.domaindevelopment.enums.BankAccountType;
-import com.financemanagement.domaindevelopment.enums.CreditCardNetWork;
-import com.financemanagement.domaindevelopment.model.AccountEntity;
-import com.financemanagement.domaindevelopment.model.AddressEntity;
-import com.financemanagement.domaindevelopment.model.BankAccountEntity;
-import com.financemanagement.domaindevelopment.model.CategoryEntity;
-import com.financemanagement.domaindevelopment.model.CreditCardAccountEntity;
-import com.financemanagement.domaindevelopment.model.CustomerEntity;
-import com.financemanagement.domaindevelopment.model.TransactionEntity;
+import com.financemanagement.domaindevelopment.enums.old.BankAccountType;
+import com.financemanagement.domaindevelopment.enums.old.CreditCardNetWork;
+import com.financemanagement.domaindevelopment.model.old.AccountEntity;
+import com.financemanagement.domaindevelopment.model.old.AddressEntity;
+import com.financemanagement.domaindevelopment.model.old.BankAccountEntity;
+import com.financemanagement.domaindevelopment.model.old.CategoryEntity;
+import com.financemanagement.domaindevelopment.model.old.CreditCardAccountEntity;
+import com.financemanagement.domaindevelopment.model.old.CustomerEntity;
+import com.financemanagement.domaindevelopment.model.old.TransactionEntity;
 
 public class ConfigurationUtil {
 	
