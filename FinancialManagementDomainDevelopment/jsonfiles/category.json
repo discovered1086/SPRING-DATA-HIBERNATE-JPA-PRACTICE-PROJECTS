@@ -1,7 +1,15 @@
 {
-    "categoryId" : "CTGRY12",
-    "categoryName" : "Credit card bill",
-    "categoryDescription" : "Bill payment for credit card",
-    "categoryEffectiveDate" : "2019-11-25T00:00:00+05:30[Asia/Kolkata]",
-    "transactionType" : "EXPENSE"
-  }
+	"categoryId": null,
+	"categoryName": "Credit card bill",
+	"categoryDescription": "Bill payment for credit card",
+	"categoryEffectiveDate": "2019-11-25T00:00:00+05:30[Asia/Kolkata]",
+	"transactionType": "EXPENSE",
+	"subCategoryEntities": [
+		{
+			"subCategoryId": null,
+			"subCategoryName": "Citi card",
+			"subCategoryDescription": "Citi bank card payment",
+			"subCategoryEffectiveDate": "2019-11-25T00:00:00+05:30[Asia/Kolkata]"
+		}
+	]
+}

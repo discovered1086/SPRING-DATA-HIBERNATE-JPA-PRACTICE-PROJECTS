@@ -1,6 +1,7 @@
 package com.financemanagement.domaindevelopment.mainclass;
 
 import java.io.File;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -25,6 +26,12 @@ public class TestRunner implements CommandLineRunner {
 		ObjectMapper mapper = new ObjectMapper();
 
 		CategoryEntity categoryEntity = mapper.readValue(new File("jsonfiles/category.json"), CategoryEntity.class);
+
+		if (Objects.nonNull(categoryEntity.getSubCategoryEntities())
+				&& !categoryEntity.getSubCategoryEntities().isEmpty()) {
+			categoryEntity.getSubCategoryEntities()
+					.forEach(subCategoryEntity -> subCategoryRepository.save(subCategoryEntity));
+		}
 
 		categoryRepository.save(categoryEntity);
 	}
