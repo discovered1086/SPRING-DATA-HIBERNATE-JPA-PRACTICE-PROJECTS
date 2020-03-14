@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,6 +14,7 @@ import com.financemanagement.domaindevelopment.mainclass.dao.SubCategoryReposito
 import com.financemanagement.domaindevelopment.mainclass.model.newmodels.CategoryEntity;
 
 @Component
+@Profile("generalRunner")
 public class TestRunner implements CommandLineRunner {
 
 	@Autowired

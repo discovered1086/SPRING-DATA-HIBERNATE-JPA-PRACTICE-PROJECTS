@@ -64,7 +64,7 @@ public class SubCategoryEntity implements Serializable {
 	@Column(length = 100, name = "SB_CTGRY_DESC")
 	private String subCategoryDescription;
 
-	@Column(name = "SB_CTGRY_EFFCTV_DT")
+	@Column(name = "SB_CTGRY_EFFCTV_DT", columnDefinition = "TIMESTAMP WITH TIME ZONE")
 	@Type(type = "org.hibernate.type.ZonedDateTimeType")
 	@FutureOrPresent(message = "Sub category effective date must not be a past date")
 	@JsonProperty(required = true, value = "subCategoryEffectiveDate")
@@ -72,7 +72,7 @@ public class SubCategoryEntity implements Serializable {
 	@JsonDeserialize(using = DateTimeDeSerializer.class)
 	private ZonedDateTime subCategoryEffectiveDate;
 
-	@Column(name = "SB_CTGRY_TRMNTN_DT")
+	@Column(name = "SB_CTGRY_TRMNTN_DT", columnDefinition = "TIMESTAMP WITH TIME ZONE")
 	@Type(type = "org.hibernate.type.ZonedDateTimeType")
 	@JsonInclude(value = JsonInclude.Include.NON_NULL)
 	@JsonProperty(required = false, value = "subCategoryTerminationDate")
