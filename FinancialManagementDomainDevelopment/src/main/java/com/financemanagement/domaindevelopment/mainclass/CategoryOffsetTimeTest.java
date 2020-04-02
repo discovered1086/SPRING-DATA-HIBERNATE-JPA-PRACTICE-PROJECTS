@@ -29,12 +29,14 @@ public class CategoryOffsetTimeTest implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		//OffsetDateTime effectiveDate = OffsetDateTime.parse("2019-11-25T00:00:00+05:30");
+		// OffsetDateTime effectiveDate =
+		// OffsetDateTime.parse("2019-11-25T00:00:00+05:30");
 
-		//OffsetDateTime terminationDate = OffsetDateTime.parse("2020-11-25T00:00:00+05:30");
-		
+		// OffsetDateTime terminationDate =
+		// OffsetDateTime.parse("2020-11-25T00:00:00+05:30");
+
 		ZonedDateTime effectiveDate = ZonedDateTime.now().truncatedTo(ChronoUnit.SECONDS);
-		
+
 		ZonedDateTime terminationDate = ZonedDateTime.now().plusYears(1L).truncatedTo(ChronoUnit.SECONDS);
 
 		SubCategoryEntity subCategoryReferenceEntity = SubCategoryEntity.builder()
@@ -55,7 +57,9 @@ public class CategoryOffsetTimeTest implements CommandLineRunner {
 					.forEach(subCategoryEntity -> subCategoryRepository.save(subCategoryEntity));
 		}
 
-		categoryRepository.save(categoryEntity);
+		CategoryEntity savedEntity = categoryRepository.save(categoryEntity);
+
+		System.out.println(categoryRepository.getOne(savedEntity.getCategoryId()).getCategoryEffectiveDate());
 	}
 
 }

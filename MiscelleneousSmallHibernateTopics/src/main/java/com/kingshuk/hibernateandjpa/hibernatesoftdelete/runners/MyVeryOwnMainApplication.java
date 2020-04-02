@@ -5,7 +5,6 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 import com.kingshuk.hibernateandjpa.hibernatesoftdelete.model.Account;
 import com.kingshuk.hibernateandjpa.hibernatesoftdelete.repositories.AccountRepository;
