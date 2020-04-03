@@ -3,8 +3,8 @@ package com.kingshuk.hibernateandjpa.softdeleteandfiltering.configuration;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.kingshuk.hibernateandjpa.softdeleteandfiltering.filtering.usingwhere.model.CategoryEntity;
 import com.kingshuk.hibernateandjpa.softdeleteandfiltering.softdelete.model.Account;
-import com.kingshuk.hibernateandjpa.softdeleteandfiltering.softdelete.model.AccountState;
 
 
 public class ConfigurationUtil {
@@ -27,7 +27,7 @@ public class ConfigurationUtil {
 					.setProperty("hibernate.show_sql", "true")
 					.setProperty("hibernate.hbm2ddl.auto", "update")
 					.setProperty("hibernate.format_sql", "true")
-					.addAnnotatedClass(AccountState.class)
+					.addAnnotatedClass(CategoryEntity.class)
 					.addAnnotatedClass(Account.class);
 					
 		} catch (Exception ex) {
