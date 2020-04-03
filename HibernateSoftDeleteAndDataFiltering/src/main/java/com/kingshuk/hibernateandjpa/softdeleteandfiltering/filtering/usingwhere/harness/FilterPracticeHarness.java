@@ -65,10 +65,8 @@ public class FilterPracticeHarness {
 
 			setFiltersOnSession(session);
 
-			TypedQuery<CategoryEntity> allCategoryQuery2 = session.createNamedQuery("findExistingCategoryByName",
+			TypedQuery<CategoryEntity> allCategoryQuery2 = session.createQuery("from Category c",
 					CategoryEntity.class);
-
-			allCategoryQuery2.setParameter("categoryNameInput", "%Loan%");
 
 			System.out.println("\n*************\n Printing all active categories\n");
 
