@@ -5,6 +5,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.kingshuk.hibernateandjpa.softdeleteandfiltering.filtering.usingfilters.model.CategoryEntity;
 import com.kingshuk.hibernateandjpa.softdeleteandfiltering.filtering.usingloader.model.LoaderCategoryEntity;
+import com.kingshuk.hibernateandjpa.softdeleteandfiltering.filtering.usingwhere.model.WhereCategoryEntity;
 import com.kingshuk.hibernateandjpa.softdeleteandfiltering.softdelete.model.Account;
 
 public class ConfigurationUtil {
@@ -26,7 +27,8 @@ public class ConfigurationUtil {
 					.setProperty("hibernate.connection.password", "Iofdtiger#16")
 					.setProperty("hibernate.show_sql", "true").setProperty("hibernate.hbm2ddl.auto", "update")
 					.setProperty("hibernate.format_sql", "true").addAnnotatedClass(CategoryEntity.class)
-					.addAnnotatedClass(LoaderCategoryEntity.class).addAnnotatedClass(Account.class);
+					.addAnnotatedClass(LoaderCategoryEntity.class).addAnnotatedClass(Account.class)
+					.addAnnotatedClass(WhereCategoryEntity.class);
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
