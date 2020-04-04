@@ -1,4 +1,4 @@
-package com.kingshuk.hibernateandjpa.softdeleteandfiltering.filtering.usingwhere.model;
+package com.kingshuk.hibernateandjpa.softdeleteandfiltering.filtering.usingloader.model;
 
 import java.io.Serializable;
 import java.time.OffsetDateTime;
@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -17,30 +18,30 @@ import javax.persistence.Version;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.Filter;
-import org.hibernate.annotations.FilterDef;
-import org.hibernate.annotations.NaturalId;
-import org.hibernate.annotations.ParamDef;
+import org.hibernate.annotations.Loader;
+import org.hibernate.annotations.ResultCheckStyle;
+import org.hibernate.annotations.SQLDelete;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "Category")
-@Table(name = "FINANCE_CATEGORY")
+@Entity(name = "LoaderCategory")
+@Table(name = "FINANCE_CATEGORY_LOADER")
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@NamedQuery(name = "findExistingCategoryByName", query = "from Category c where upper(trim(c.categoryName)) like upper(trim(:categoryNameInput))"
+@SQLDelete(sql = "UPDATE finance_category_loader SET CTGRY_TRMNTN_DT = CURRENT_TIMESTAMP WHERE ctgry_id=?"
+			, check = ResultCheckStyle.COUNT)
+@NamedQuery(name = "findCategoryByName", query = "from LoaderCategory c where upper(trim(c.categoryName)) like upper(trim(:categoryNameInput))"
 		+ " and trunc(c.categoryEffectiveDate) <= trunc(sysdate)")
-@FilterDef(name = "effTermDateCheck", parameters = {
-		@ParamDef(name = "effDate", type = "org.hibernate.type.OffsetDateTimeType"),
-		@ParamDef(name = "termDate", type = "org.hibernate.type.OffsetDateTimeType") })
-@Filter(name = "effTermDateCheck", condition = "CTGRY_EFFCTV_DT <= :effDate and "
-		+ "NVL(CTGRY_TRMNTN_DT, SYSTIMESTAMP+1) > :termDate")
-public class CategoryEntity implements Serializable {
+@NamedNativeQuery(name = "findActiveCategory", query = "SELECT f.* FROM finance_category_loader f WHERE "
+		+ "f.CTGRY_ID=? AND "
+		+ "NVL(f.CTGRY_TRMNTN_DT, CURRENT_TIMESTAMP+1) > CURRENT_TIMESTAMP", resultClass = LoaderCategoryEntity.class)
+@Loader(namedQuery = "findActiveCategory")
+public class LoaderCategoryEntity implements Serializable {
 
 	/**
 	 * 
@@ -58,7 +59,6 @@ public class CategoryEntity implements Serializable {
 
 	@Column(length = 60, name = "CTGRY_NM")
 	@NotBlank(message = "Category name must not be blank")
-	@NaturalId(mutable = true)
 	private String categoryName;
 
 	@Column(length = 100, name = "CTGRY_DESC")

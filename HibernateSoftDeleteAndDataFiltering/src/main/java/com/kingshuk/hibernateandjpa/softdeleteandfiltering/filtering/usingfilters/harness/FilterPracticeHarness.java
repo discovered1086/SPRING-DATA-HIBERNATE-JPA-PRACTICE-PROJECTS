@@ -1,4 +1,4 @@
-package com.kingshuk.hibernateandjpa.softdeleteandfiltering.filtering.usingwhere.harness;
+package com.kingshuk.hibernateandjpa.softdeleteandfiltering.filtering.usingfilters.harness;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -15,8 +15,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.kingshuk.hibernateandjpa.softdeleteandfiltering.configuration.ConfigurationUtil;
-import com.kingshuk.hibernateandjpa.softdeleteandfiltering.filtering.usingwhere.model.CategoryEntity;
-import com.kingshuk.hibernateandjpa.softdeleteandfiltering.filtering.usingwhere.model.TransactionTypeEnum;
+import com.kingshuk.hibernateandjpa.softdeleteandfiltering.filtering.usingfilters.model.CategoryEntity;
+import com.kingshuk.hibernateandjpa.softdeleteandfiltering.filtering.usingfilters.model.TransactionTypeEnum;
 
 public class FilterPracticeHarness {
 
@@ -90,8 +90,8 @@ public class FilterPracticeHarness {
 	private static void setFiltersOnSession(Session session) {
 		OffsetDateTime timeNow = OffsetDateTime.of(LocalDateTime.now(), ZoneOffset.of("-5"))
 				.truncatedTo(ChronoUnit.SECONDS);
-		session.enableFilter("effTermDateCheck").setParameter("effDate", timeNow).setParameter("termDate", timeNow);
-		// session.enableFilter("termDateCheck").setParameter("termDate", timeNow);
+		session.enableFilter("effTermDateCheck").setParameter("effDate", timeNow)
+		.setParameter("termDate", timeNow);
 	}
 
 }
