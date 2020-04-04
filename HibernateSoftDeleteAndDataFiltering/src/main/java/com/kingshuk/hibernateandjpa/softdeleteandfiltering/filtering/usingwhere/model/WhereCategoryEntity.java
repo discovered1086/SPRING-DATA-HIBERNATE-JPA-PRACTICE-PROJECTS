@@ -17,8 +17,6 @@ import javax.persistence.Version;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.ResultCheckStyle;
-import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import lombok.AllArgsConstructor;
@@ -32,8 +30,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SQLDelete(sql = "UPDATE FINANCE_CATEGORY_WHERE SET CTGRY_TRMNTN_DT = CURRENT_TIMESTAMP WHERE ctgry_id=?"
-			, check = ResultCheckStyle.COUNT)
+/*@SQLDelete(sql = "UPDATE FINANCE_CATEGORY_WHERE SET CTGRY_TRMNTN_DT = CURRENT_TIMESTAMP WHERE ctgry_id=?"
+			, check = ResultCheckStyle.COUNT)*/
 @NamedQuery(name = "findCategoryByWhereName", query = "from WhereCategory c where upper(trim(c.categoryName)) like upper(trim(:categoryNameInput))"
 		+ " and trunc(c.categoryEffectiveDate) <= trunc(sysdate)")
 @Where(clause = "NVL(CTGRY_TRMNTN_DT, CURRENT_TIMESTAMP+1) > CURRENT_TIMESTAMP")

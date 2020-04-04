@@ -5,7 +5,7 @@ import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
-import java.util.List;
+import java.util.Scanner;
 
 import javax.persistence.TypedQuery;
 
@@ -17,7 +17,7 @@ import com.kingshuk.hibernateandjpa.softdeleteandfiltering.configuration.Configu
 import com.kingshuk.hibernateandjpa.softdeleteandfiltering.filtering.usingwhere.model.TransactionTypeEnum;
 import com.kingshuk.hibernateandjpa.softdeleteandfiltering.filtering.usingwhere.model.WhereCategoryEntity;
 
-public class WherePracticeHarness {
+public class WherePracticeHarnessWithId {
 
 	public static void main(String[] args) {
 		Transaction transaction = null;
@@ -62,14 +62,17 @@ public class WherePracticeHarness {
 
 			transaction = session.beginTransaction();
 
-			TypedQuery<WhereCategoryEntity> allCategoryQuery2 = session.createQuery("from WhereCategory c",
-					WhereCategoryEntity.class);
+			System.out.println("\n___Please enter the category id you would like to check_____");
+			
+			Scanner scanner = new Scanner(System.in);
+			
+			long id = scanner.nextLong();
+			
+			scanner.close();
 
-			System.out.println("\n*************\n Printing all active categories\n");
-
-			List<WhereCategoryEntity> resultList = allCategoryQuery2.getResultList();
-
-			resultList.forEach(System.out::println);
+			WhereCategoryEntity categoryEntity3 = session.get(WhereCategoryEntity.class, id);
+			
+			System.out.println(categoryEntity3);
 
 			transaction.commit();
 
