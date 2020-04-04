@@ -6,7 +6,7 @@ import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
-import java.util.List;
+import java.util.Scanner;
 
 import javax.persistence.TypedQuery;
 
@@ -18,7 +18,7 @@ import com.kingshuk.hibernateandjpa.softdeleteandfiltering.configuration.Configu
 import com.kingshuk.hibernateandjpa.softdeleteandfiltering.filtering.usingfilters.model.CategoryEntity;
 import com.kingshuk.hibernateandjpa.softdeleteandfiltering.filtering.usingfilters.model.TransactionTypeEnum;
 
-public class FilterPracticeHarness {
+public class FilterPracticeHarnessWithId {
 
 	public static void main(String[] args) {
 		Transaction transaction = null;
@@ -30,13 +30,13 @@ public class FilterPracticeHarness {
 
 			OffsetDateTime effectiveDate = OffsetDateTime.parse("2020-04-04T00:00:00-05:00");
 
-			CategoryEntity categoryEntity = CategoryEntity.builder()
+			CategoryEntity categoryEntity = CategoryEntity.builder().categoryId(87l)
 					.categoryDescription("Bill Payment for various types of bills").categoryName("Bill Payment")
 					.categoryEffectiveDate(effectiveDate).categoryTransactionType(TransactionTypeEnum.EXPENSE).build();
 
-			CategoryEntity categoryEntity2 = CategoryEntity.builder().categoryDescription("Bill Payment for loans")
-					.categoryName("Loan Payment").categoryEffectiveDate(effectiveDate)
-					.categoryTransactionType(TransactionTypeEnum.EXPENSE).build();
+			CategoryEntity categoryEntity2 = CategoryEntity.builder().categoryId(88l)
+					.categoryDescription("Bill Payment for loans").categoryName("Loan Payment")
+					.categoryEffectiveDate(effectiveDate).categoryTransactionType(TransactionTypeEnum.EXPENSE).build();
 
 			session.save(categoryEntity);
 			session.save(categoryEntity2);
@@ -64,19 +64,24 @@ public class FilterPracticeHarness {
 			transaction = session.beginTransaction();
 
 			setFiltersOnSession(session);
-
-			TypedQuery<CategoryEntity> allCategoryQuery2 = session.createQuery("from Category c",
-					CategoryEntity.class);
-
-			System.out.println("\n*************\n Printing all active categories\n");
-
-			List<CategoryEntity> resultList = allCategoryQuery2.getResultList();
 			
-			resultList.forEach(System.out::println);
+			System.out.println("\n___Please enter the category id you would like to check_____");
+			
+			Scanner scanner = new Scanner(System.in);
+			
+			long id = scanner.nextLong();
+			
+			scanner.close();
+
+			CategoryEntity categoryEntity3 = session.get(CategoryEntity.class, id);
+
+			System.out.println(categoryEntity3);
 
 			transaction.commit();
 
 			session.close();
+			
+			
 
 		} catch (Exception exception) {
 			exception.printStackTrace();
@@ -90,8 +95,7 @@ public class FilterPracticeHarness {
 	private static void setFiltersOnSession(Session session) {
 		OffsetDateTime timeNow = OffsetDateTime.of(LocalDateTime.now(), ZoneOffset.of("-5"))
 				.truncatedTo(ChronoUnit.SECONDS);
-		session.enableFilter("effTermDateCheck").setParameter("effDate", timeNow)
-		.setParameter("termDate", timeNow);
+		session.enableFilter("effTermDateCheck").setParameter("effDate", timeNow).setParameter("termDate", timeNow);
 	}
 
 }
