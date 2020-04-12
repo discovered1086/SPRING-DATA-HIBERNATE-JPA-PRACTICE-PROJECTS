@@ -25,6 +25,7 @@ public class ConfigurationUtil {
 					.setProperty("hibernate.connection.password", "Iofdtiger#16")
 					.setProperty("hibernate.show_sql", "true").setProperty("hibernate.hbm2ddl.auto", "update")
 					.setProperty("hibernate.format_sql", "true")
+					.setProperty("hibernate.jdbc.time_zone", "UTC")
 					.addAnnotatedClass(SupportedDateTimeEntity.class);
 
 		} catch (Exception ex) {

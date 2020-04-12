@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
+import java.time.ZonedDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,4 +46,7 @@ public class SupportedDateTimeEntity {
 	 
 	@Column(name = "OFFSET_DATE_TIME")
     private OffsetDateTime offsetDateTime;
+	
+	@Column(name = "ZONED_DATE_TIME")
+    private ZonedDateTime zonedDateTime;
 }

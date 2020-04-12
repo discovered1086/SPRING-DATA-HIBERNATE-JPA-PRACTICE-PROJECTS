@@ -1,5 +1,7 @@
 package com.kingshuk.hibernateandjpa.dateandtime.testharnesses;
 
+import java.time.ZoneId;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -17,9 +19,11 @@ public class SupportedDateTimeGetDataHarness {
 
 			transaction = session.beginTransaction();
 
-			SupportedDateTimeEntity entity = session.get(SupportedDateTimeEntity.class, 111l);
-
+			SupportedDateTimeEntity entity = session.get(SupportedDateTimeEntity.class, 116l);
+			
 			System.out.println(entity);
+			
+			System.out.println(entity.getZonedDateTime().withZoneSameInstant(ZoneId.of("Asia/Kolkata")));
 
 			transaction.commit();
 

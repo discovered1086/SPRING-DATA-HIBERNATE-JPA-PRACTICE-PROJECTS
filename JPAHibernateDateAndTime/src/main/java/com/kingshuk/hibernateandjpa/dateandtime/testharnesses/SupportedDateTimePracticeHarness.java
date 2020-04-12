@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -27,12 +28,11 @@ public class SupportedDateTimePracticeHarness {
 			OffsetDateTime offsetDateTime = OffsetDateTime.now()
 					.withOffsetSameInstant(ZoneOffset.ofHoursMinutes(05, 30));
 			
-			session.setProperty("hibernate.jdbc.time_zone", "America/New_York");
-			
 			System.out.println(offsetDateTime);
 
 			session.save(SupportedDateTimeEntity.builder().localDate(LocalDate.now()).localTime(LocalTime.now())
 					.localDateTime(LocalDateTime.now()).offsetDateTime(offsetDateTime).offsetTime(OffsetTime.now())
+					.zonedDateTime(ZonedDateTime.now())
 					.build());
 
 			transaction.commit();
