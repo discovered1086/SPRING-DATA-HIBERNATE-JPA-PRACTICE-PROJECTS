@@ -1,4 +1,5 @@
 package com.kingshuk.hibernateandjpa.dateandtime.testharnesses;
+
 /**
  * This class has been created to practice the effect of offset transition
  * during or after day light savings time and how the 
@@ -73,8 +74,8 @@ public class ZoneTransitionPracticeHarness {
 
 			Transaction transaction2 = session.beginTransaction();
 
-			TypedQuery<SupportedDateTimeEntity> typedQuery = session.createQuery("FROM SupportedDateTimeEntity",
-					SupportedDateTimeEntity.class);
+			TypedQuery<SupportedDateTimeEntity> typedQuery = session.createQuery(
+					"FROM SupportedDateTimeEntity sdte ORDER BY sdte.entityId ASC", SupportedDateTimeEntity.class);
 
 			typedQuery.getResultStream().forEach(System.out::println);
 

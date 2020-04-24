@@ -19,8 +19,8 @@ public class SupportedDateTimeGetAllDataHarness {
 
 			transaction = session.beginTransaction();
 
-			TypedQuery<SupportedDateTimeEntity> typedQuery = session.createQuery("FROM SupportedDateTimeEntity",
-					SupportedDateTimeEntity.class);
+			TypedQuery<SupportedDateTimeEntity> typedQuery = session.createQuery(
+					"FROM SupportedDateTimeEntity sdte ORDER BY sdte.entityId ASC", SupportedDateTimeEntity.class);
 
 			typedQuery.getResultStream().forEach(System.out::println);
 
