@@ -71,15 +71,21 @@ public class ZoneTransitionPracticeHarness {
 			session.save(dateTimeEntity4);
 
 			transaction.commit();
+			
+			session.close();
+			
+			Session session2 = sessionFactory.openSession();
 
-			Transaction transaction2 = session.beginTransaction();
+			Transaction transaction2 = session2.beginTransaction();
 
-			TypedQuery<SupportedDateTimeEntity> typedQuery = session.createQuery(
+			TypedQuery<SupportedDateTimeEntity> typedQuery = session2.createQuery(
 					"FROM SupportedDateTimeEntity sdte ORDER BY sdte.entityId ASC", SupportedDateTimeEntity.class);
 
 			typedQuery.getResultStream().forEach(System.out::println);
 
 			transaction2.commit();
+			
+			session.close();
 
 		} catch (Exception exception) {
 			exception.printStackTrace();
