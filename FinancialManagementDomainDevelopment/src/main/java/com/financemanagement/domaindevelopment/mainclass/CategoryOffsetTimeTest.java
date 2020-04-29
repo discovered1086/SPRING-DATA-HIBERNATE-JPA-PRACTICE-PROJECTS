@@ -11,11 +11,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import com.financemanagement.domaindevelopment.mainclass.dao.CategoryRepository;
-import com.financemanagement.domaindevelopment.mainclass.dao.SubCategoryRepository;
-import com.financemanagement.domaindevelopment.mainclass.enums.newenums.TransactionTypeEnum;
-import com.financemanagement.domaindevelopment.mainclass.model.newmodels.CategoryEntity;
-import com.financemanagement.domaindevelopment.mainclass.model.newmodels.SubCategoryEntity;
+import com.financemanagement.domaindevelopment.allmodels.model.newmodels.CategoryEntity;
+import com.financemanagement.domaindevelopment.allmodels.model.newmodels.SubCategoryEntity;
+import com.financemanagement.domaindevelopment.dao.CategoryRepository;
+import com.financemanagement.domaindevelopment.dao.SubCategoryRepository;
+import com.financemanagement.domaindevelopment.enums.newenums.TransactionTypeEnum;
 
 @Component
 @Profile("categoryOffsetTest")

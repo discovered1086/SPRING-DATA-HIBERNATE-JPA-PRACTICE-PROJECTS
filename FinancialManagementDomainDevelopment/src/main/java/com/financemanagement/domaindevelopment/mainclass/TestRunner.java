@@ -9,9 +9,9 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.financemanagement.domaindevelopment.mainclass.dao.CategoryRepository;
-import com.financemanagement.domaindevelopment.mainclass.dao.SubCategoryRepository;
-import com.financemanagement.domaindevelopment.mainclass.model.newmodels.CategoryEntity;
+import com.financemanagement.domaindevelopment.allmodels.model.newmodels.CategoryEntity;
+import com.financemanagement.domaindevelopment.dao.CategoryRepository;
+import com.financemanagement.domaindevelopment.dao.SubCategoryRepository;
 
 @Component
 @Profile("generalRunner")
