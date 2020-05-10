@@ -10,8 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 
 import lombok.Builder;
 import lombok.Data;
@@ -24,11 +24,11 @@ import lombok.Data;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "accUserSequence")
-	@SequenceGenerator(name = "accUserSequence", 
-					   sequenceName = "ACCOUNT_USER_SEQUENCE", 
-					   initialValue = 1, 
-					   allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "userTableGen")
+	@TableGenerator(name = "userTableGen", 
+					table = "USER_TABLE_GENERATOR", 
+					pkColumnName = "IDENTIFIER_NAME", 
+					valueColumnName = "IDENTIFIER_VALUE")
 	@Column(name = "USER_ID")
 	private long userId;
 
