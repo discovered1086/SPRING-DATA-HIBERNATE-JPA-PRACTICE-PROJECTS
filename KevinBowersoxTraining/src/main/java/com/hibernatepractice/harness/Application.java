@@ -1,5 +1,7 @@
 package com.hibernatepractice.harness;
 
+import java.time.LocalDateTime;
+
 import org.hibernate.Session;
 
 import com.hibernatepractice.config.HibernateConfigUtil;
@@ -18,6 +20,8 @@ public class Application {
 		User user = User.builder().firstName("Kingshuk")
 				      .lastName("Mukherjee")
 				      .userName("rishi2616")
+				      .createdDate(LocalDateTime.now())
+				      .lastUpdatedDate(LocalDateTime.now())
 				      .build();
 		
 		session.save(user);
