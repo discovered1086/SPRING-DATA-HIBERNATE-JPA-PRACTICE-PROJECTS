@@ -2,6 +2,7 @@ package com.hibernatepractice.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -24,7 +25,7 @@ import lombok.Data;
 @Data
 @Builder
 @Access(AccessType.FIELD)
-public class User {
+public class ComplexUser {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "userTableGen")
@@ -44,6 +45,12 @@ public class User {
 
 	@Column(name = "DATE_OF_BIRTH")
 	private LocalDate dob;
+	
+	private User referredBy;
+	
+	private List<String> phoneNumbers;
+	
+	private Address address;
 
 	@Column(name = "CREATED_DATE", updatable = false)
 	private LocalDateTime createdDate;
