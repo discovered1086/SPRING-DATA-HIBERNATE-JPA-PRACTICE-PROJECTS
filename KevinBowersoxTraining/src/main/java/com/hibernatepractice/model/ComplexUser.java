@@ -8,12 +8,14 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Formula;
 
@@ -21,7 +23,7 @@ import lombok.Builder;
 import lombok.Data;
 
 @Entity
-@Table(name = "ACCOUNT_USER")
+@Table(name = "COMPLEX_ACCOUNT_USER")
 @Data
 @Builder
 @Access(AccessType.FIELD)
@@ -46,10 +48,13 @@ public class ComplexUser {
 	@Column(name = "DATE_OF_BIRTH")
 	private LocalDate dob;
 	
+	@Transient
 	private User referredBy;
 	
+	@Transient
 	private List<String> phoneNumbers;
 	
+	@Embedded
 	private Address address;
 
 	@Column(name = "CREATED_DATE", updatable = false)
