@@ -3,6 +3,7 @@ package com.hibernatepractice.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -10,9 +11,12 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Transient;
@@ -21,10 +25,12 @@ import org.hibernate.annotations.Formula;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "COMPLEX_ACCOUNT_USER")
 @Data
+@EqualsAndHashCode(exclude = {"credential", "accounts"})
 @Builder
 @Access(AccessType.FIELD)
 public class ComplexUser {
@@ -48,9 +54,12 @@ public class ComplexUser {
 	@Column(name = "DATE_OF_BIRTH")
 	private LocalDate dob;
 	
-	@Transient
-	private User referredBy;
+	@ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+	private Set<FinancialAccountEntity> accounts;
 	
+	@OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+	private Credential credential;
+		
 	@Transient
 	private List<String> phoneNumbers;
 	

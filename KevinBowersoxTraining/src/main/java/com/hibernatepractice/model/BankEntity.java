@@ -25,7 +25,7 @@ import lombok.Builder;
 import lombok.Data;
 
 @Entity
-@Table(name = "FINANCIAL_ORGANIZATION")
+@Table(name = "BANK_ORGANIZATION")
 @Data
 @Builder
 @Access(AccessType.FIELD)

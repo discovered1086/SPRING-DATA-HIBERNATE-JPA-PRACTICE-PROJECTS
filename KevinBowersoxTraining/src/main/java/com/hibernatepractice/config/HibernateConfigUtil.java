@@ -5,8 +5,12 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import com.hibernatepractice.model.BankEntity;
+import com.hibernatepractice.model.BudgetEntity;
 import com.hibernatepractice.model.ComplexUser;
+import com.hibernatepractice.model.Credential;
+import com.hibernatepractice.model.FinancialAccountEntity;
 import com.hibernatepractice.model.TemporalTestEntity;
+import com.hibernatepractice.model.TransactionEntity;
 import com.hibernatepractice.model.User;
 
 public class HibernateConfigUtil {
@@ -24,7 +28,11 @@ public class HibernateConfigUtil {
 			configuration.addAnnotatedClass(User.class)
 			.addAnnotatedClass(TemporalTestEntity.class)
 			.addAnnotatedClass(ComplexUser.class)
-			.addAnnotatedClass(BankEntity.class);
+			.addAnnotatedClass(BankEntity.class)
+			.addAnnotatedClass(Credential.class)
+			.addAnnotatedClass(FinancialAccountEntity.class)
+			.addAnnotatedClass(BudgetEntity.class)
+			.addAnnotatedClass(TransactionEntity.class);
 
 			return configuration.buildSessionFactory(new StandardServiceRegistryBuilder().build());
 		} catch (Exception e) {
