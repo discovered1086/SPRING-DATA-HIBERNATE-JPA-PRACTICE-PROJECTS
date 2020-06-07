@@ -21,13 +21,20 @@ import javax.persistence.MapKeyColumn;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
+import org.hibernate.annotations.DynamicUpdate;
+
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "BANK_ORGANIZATION")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@DynamicUpdate(true)
 @Access(AccessType.FIELD)
 public class BankEntity {
 
@@ -47,7 +54,7 @@ public class BankEntity {
 	
 	@ElementCollection
 	@CollectionTable(name = "BANK_CONTACT", joinColumns = @JoinColumn(name = "BANK_ID"))
-	@Column(name = "CONTACT_NAME", nullable = false, unique = true)
+	@Column(name = "CONTACT_NAME", nullable = false)
 	private List<String> contactNames;
 	
 	@ElementCollection
@@ -66,7 +73,7 @@ public class BankEntity {
 			@AttributeOverride(name = "zipCode", column = @Column(name = "BANK_ZIP")) })
 	private List<Address> address;
 
-	@Column(name = "ESTABLISHED_DATE", updatable = false)
+	@Column(name = "ESTABLISHED_DATE")
 	private LocalDate establishedDate;
 
 }
