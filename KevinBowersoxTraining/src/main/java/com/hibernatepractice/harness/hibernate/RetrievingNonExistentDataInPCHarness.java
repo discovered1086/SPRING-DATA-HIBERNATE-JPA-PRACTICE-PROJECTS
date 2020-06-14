@@ -1,4 +1,4 @@
-package com.hibernatepractice.harness;
+package com.hibernatepractice.harness.hibernate;
 
 import org.hibernate.Session;
 
@@ -6,21 +6,19 @@ import com.hibernatepractice.config.HibernateConfigUtil;
 import com.hibernatepractice.model.BankEntity;
 
 
-public class ModifyingDataInPCHarness {
+public class RetrievingNonExistentDataInPCHarness {
 
 	public static void main(String[] args) {
 		try (Session session = HibernateConfigUtil.getSessionFactory().openSession();) {
 
 			session.beginTransaction();
 
-			BankEntity bank = session.load(BankEntity.class, 1l);
+			BankEntity bank = session.get(BankEntity.class, 123l);
 
 			System.out.println("Method executed"
 					+ (session.contains(bank) ? " and data loaded into the persistence context" : null));
 
-			bank.setBankName("Chase Bank");
-
-			System.out.println("The bank bank name is " + bank.getBankName());
+			System.out.println("The bank name is " + bank.getBankName());
 
 			session.getTransaction().commit();
 

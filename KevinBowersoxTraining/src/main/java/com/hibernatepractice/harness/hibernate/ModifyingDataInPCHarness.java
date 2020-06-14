@@ -1,31 +1,26 @@
-package com.hibernatepractice.harness;
+package com.hibernatepractice.harness.hibernate;
 
 import org.hibernate.Session;
 
 import com.hibernatepractice.config.HibernateConfigUtil;
 import com.hibernatepractice.model.BankEntity;
-import com.hibernatepractice.model.FinancialAccountEntity;
 
 
-public class RemovingDataInPCHarness {
+public class ModifyingDataInPCHarness {
 
 	public static void main(String[] args) {
 		try (Session session = HibernateConfigUtil.getSessionFactory().openSession();) {
 
 			session.beginTransaction();
-			
-			FinancialAccountEntity account = session.get(FinancialAccountEntity.class, 1l);
-			
-			session.remove(account);
 
 			BankEntity bank = session.load(BankEntity.class, 1l);
 
 			System.out.println("Method executed"
-					+ (session.contains(bank) ? " and data loaded into the persistence context" : ""));
+					+ (session.contains(bank) ? " and data loaded into the persistence context" : null));
 
-			System.out.println("Before removal "+session.contains(bank));
-			session.delete(bank);
-			System.out.println("After removal "+session.contains(bank));
+			bank.setBankName("Chase KevinsBankEntity");
+
+			System.out.println("The bank bank name is " + bank.getBankName());
 
 			session.getTransaction().commit();
 

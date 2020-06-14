@@ -1,4 +1,4 @@
-package com.hibernatepractice.harness;
+package com.hibernatepractice.harness.hibernate;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -22,7 +22,7 @@ public class ManyToManyTestHarness {
 		try (Session session = HibernateConfigUtil.getSessionFactory().openSession();) {
 
 			session.beginTransaction();
-			BankEntity bank = BankEntity.builder().bankName("Bank of America")
+			BankEntity bank = BankEntity.builder().bankName("KevinsBankEntity of America")
 					.establishedDate(LocalDate.of(1999, Month.OCTOBER, 16))
 					.contactNames(Arrays.asList("Kingshuk Mukherjee", "Deeksha Banerjee"))
 					.build();

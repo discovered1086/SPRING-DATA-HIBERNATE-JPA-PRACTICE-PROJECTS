@@ -1,4 +1,4 @@
-package com.hibernatepractice.harness;
+package com.hibernatepractice.harness.hibernate;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -23,7 +23,7 @@ public class FlushMethodHarness {
 			System.out.println("Method executed"
 					+ (session.contains(detachedBank) ? " and data loaded into the persistence context" : ""));
 
-			detachedBank.setBankName("Chase Bank");
+			detachedBank.setBankName("Chase KevinsBankEntity");
 			System.out.println("Calling flush");
 			session.flush();
 

@@ -1,4 +1,4 @@
-package com.hibernatepractice.harness;
+package com.hibernatepractice.harness.hibernate;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

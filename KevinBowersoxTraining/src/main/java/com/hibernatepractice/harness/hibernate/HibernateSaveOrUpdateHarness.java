@@ -1,4 +1,4 @@
-package com.hibernatepractice.harness;
+package com.hibernatepractice.harness.hibernate;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -35,7 +35,7 @@ public class HibernateSaveOrUpdateHarness {
 			Map<String, String> locations = new HashMap<>();
 			locations.put("CHIL", "Chilwell IL");
 
-			BankEntity transientBank = BankEntity.builder().bankName("Bank of America")
+			BankEntity transientBank = BankEntity.builder().bankName("KevinsBankEntity of America")
 					.establishedDate(LocalDate.of(1999, Month.OCTOBER, 16))
 					.contactNames(Arrays.asList("Amit Biswas", "Mainak Biswas"))
 					.address(Arrays.asList(address2)).locations(locations).build();
@@ -48,7 +48,7 @@ public class HibernateSaveOrUpdateHarness {
 			System.out.println(session2.contains(transientBank));
 			
 			session2.saveOrUpdate(detachedBank);
-			detachedBank.setBankName("Santander Bank");
+			detachedBank.setBankName("Santander KevinsBankEntity");
 			
 			session2.saveOrUpdate(transientBank);
 			

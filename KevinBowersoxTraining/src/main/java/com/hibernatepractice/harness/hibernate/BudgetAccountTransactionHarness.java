@@ -1,4 +1,4 @@
-package com.hibernatepractice.harness;
+package com.hibernatepractice.harness.hibernate;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,10 +13,11 @@ import org.hibernate.Session;
 import com.hibernatepractice.config.HibernateConfigUtil;
 import com.hibernatepractice.model.Address;
 import com.hibernatepractice.model.BankEntity;
+import com.hibernatepractice.model.BudgetEntity;
 import com.hibernatepractice.model.FinancialAccountEntity;
 import com.hibernatepractice.model.TransactionEntity;
 
-public class AccountTransactionHarness {
+public class BudgetAccountTransactionHarness {
 
 	public static void main(String[] args) {
 		try (Session session = HibernateConfigUtil.getSessionFactory().openSession();) {
@@ -33,12 +34,17 @@ public class AccountTransactionHarness {
 			locations.put("HCT", "Hartford CT");
 			locations.put("CIL", "Chicago IL");
 
-			BankEntity bank = BankEntity.builder().bankName("Bank of America")
+			BankEntity bank = BankEntity.builder().bankName("KevinsBankEntity of America")
 					.establishedDate(LocalDate.of(1999, Month.OCTOBER, 16))
 					.contactNames(Arrays.asList("Kingshuk Mukherjee", "Deeksha Banerjee"))
 					.address(Arrays.asList(address, address2)).locations(locations).build();
 			
-			session.save(bank);
+			//session.save(bank);
+			
+			BudgetEntity budgetEntity =  BudgetEntity.builder()
+					.goalAmount(BigDecimal.valueOf(3400.00))
+					.period("May 2020")
+					.build();
 
 			TransactionEntity transaction1 = TransactionEntity.builder().transactionAmount(BigDecimal.valueOf(20.00))
 					.createdBy("Kingshuk Mukherjee").createdDate(LocalDateTime.now()).transactionType("Debit")
@@ -58,6 +64,10 @@ public class AccountTransactionHarness {
 			transaction2.setAccount(account);
 			
 			session.save(account);
+			
+			budgetEntity.setTransactions(Arrays.asList(transaction1, transaction2));
+			
+			session.save(budgetEntity);
 
 			session.getTransaction().commit();
 

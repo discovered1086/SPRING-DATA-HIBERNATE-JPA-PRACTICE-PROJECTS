@@ -1,4 +1,4 @@
-package com.hibernatepractice.harness;
+package com.hibernatepractice.harness.hibernate;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -36,7 +36,7 @@ public class AttributeOverridesTestHarness {
 			locations.put("CIL", "Chicago IL");
 
 			BankEntity bank = BankEntity.builder()
-					.bankName("Bank of America")
+					.bankName("KevinsBankEntity of America")
 					.establishedDate(LocalDate.of(1999, Month.OCTOBER, 16))
 					.contactNames(Arrays.asList("Kingshuk Mukherjee", "Deeksha Banerjee"))
 					.address(Arrays.asList(address, address2))
