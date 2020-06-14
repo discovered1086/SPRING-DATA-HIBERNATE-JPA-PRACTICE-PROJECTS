@@ -1,5 +1,7 @@
 package com.hibernatepractice.harness.jpa;
 
+import java.util.Objects;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -7,8 +9,7 @@ import javax.persistence.Persistence;
 
 import com.hibernatepractice.model.KevinsBankEntity;
 
-@SuppressWarnings("squid:CommentedOutCodeLine")
-public class JPARetrieveEntityTestHarness {
+public class JPARemoveEntityTestHarness {
 
 	public static void main(String[] args) {
 		EntityManagerFactory entityManagerFactory = null;
@@ -22,12 +23,14 @@ public class JPARetrieveEntityTestHarness {
 			transaction = entityManager.getTransaction();
 			transaction.begin();
 
-			KevinsBankEntity bankEntity = entityManager.find(KevinsBankEntity.class, 125l);
-			
-			//KevinsBankEntity bankEntity = entityManager.getReference(KevinsBankEntity.class, 1l);
-
+			KevinsBankEntity bankEntity = entityManager.find(KevinsBankEntity.class, 1l);
 			System.out.println(entityManager.contains(bankEntity));
-			System.out.println(bankEntity.getName());
+
+			if (Objects.nonNull(bankEntity)) {
+				entityManager.remove(bankEntity);
+			}
+			
+			System.out.println(entityManager.contains(bankEntity));
 
 			transaction.commit();
 

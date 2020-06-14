@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -34,7 +35,9 @@ import lombok.NoArgsConstructor;
 public class KevinsBankEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "userTableGen")
+	@TableGenerator(name = "userTableGen", table = "USER_TABLE_GENERATOR", 
+					pkColumnName = "IDENTIFIER_NAME", valueColumnName = "IDENTIFIER_VALUE")
 	@Column(name = "BANK_ID")
 	private Long bankId;
 	
