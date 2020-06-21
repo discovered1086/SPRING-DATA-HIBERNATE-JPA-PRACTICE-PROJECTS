@@ -8,10 +8,13 @@ import com.hibernatepractice.model.BankEntity;
 import com.hibernatepractice.model.BudgetEntity;
 import com.hibernatepractice.model.ComplexUser;
 import com.hibernatepractice.model.Credential;
+import com.hibernatepractice.model.CurrencyEntity;
 import com.hibernatepractice.model.FinancialAccountEntity;
 import com.hibernatepractice.model.TemporalTestEntity;
 import com.hibernatepractice.model.TransactionEntity;
 import com.hibernatepractice.model.User;
+import com.hibernatepractice.model.inheritance.mappedsuperclass.BondEntity;
+import com.hibernatepractice.model.inheritance.mappedsuperclass.StockEntity;
 
 public class HibernateConfigUtil {
 
@@ -32,7 +35,12 @@ public class HibernateConfigUtil {
 			.addAnnotatedClass(Credential.class)
 			.addAnnotatedClass(FinancialAccountEntity.class)
 			.addAnnotatedClass(BudgetEntity.class)
-			.addAnnotatedClass(TransactionEntity.class);
+			.addAnnotatedClass(TransactionEntity.class)
+			.addAnnotatedClass(CurrencyEntity.class)
+			.addAnnotatedClass(StockEntity.class)
+			.addAnnotatedClass(BondEntity.class)
+			.addAnnotatedClass(com.hibernatepractice.model.inheritance.tableperclass.StockTpcEntity.class)
+			.addAnnotatedClass(com.hibernatepractice.model.inheritance.tableperclass.BondTpcEntity.class);
 
 			return configuration.buildSessionFactory(new StandardServiceRegistryBuilder().build());
 		} catch (Exception e) {
