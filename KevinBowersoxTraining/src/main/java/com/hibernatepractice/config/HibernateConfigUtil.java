@@ -15,6 +15,13 @@ import com.hibernatepractice.model.TransactionEntity;
 import com.hibernatepractice.model.User;
 import com.hibernatepractice.model.inheritance.mappedsuperclass.BondEntity;
 import com.hibernatepractice.model.inheritance.mappedsuperclass.StockEntity;
+import com.hibernatepractice.model.inheritance.singletable.BondStEntity;
+import com.hibernatepractice.model.inheritance.singletable.InvestmentStEntity;
+import com.hibernatepractice.model.inheritance.singletable.PortfolioStEntity;
+import com.hibernatepractice.model.inheritance.singletable.StockStEntity;
+import com.hibernatepractice.model.inheritance.tableperclass.BondTpcEntity;
+import com.hibernatepractice.model.inheritance.tableperclass.PortfolioTpcEntity;
+import com.hibernatepractice.model.inheritance.tableperclass.StockTpcEntity;
 
 public class HibernateConfigUtil {
 
@@ -39,8 +46,13 @@ public class HibernateConfigUtil {
 			.addAnnotatedClass(CurrencyEntity.class)
 			.addAnnotatedClass(StockEntity.class)
 			.addAnnotatedClass(BondEntity.class)
-			.addAnnotatedClass(com.hibernatepractice.model.inheritance.tableperclass.StockTpcEntity.class)
-			.addAnnotatedClass(com.hibernatepractice.model.inheritance.tableperclass.BondTpcEntity.class);
+			.addAnnotatedClass(StockTpcEntity.class)
+			.addAnnotatedClass(BondTpcEntity.class)
+			.addAnnotatedClass(PortfolioTpcEntity.class)
+			.addAnnotatedClass(InvestmentStEntity.class)
+			.addAnnotatedClass(StockStEntity.class)
+			.addAnnotatedClass(BondStEntity.class)
+			.addAnnotatedClass(PortfolioStEntity.class);
 
 			return configuration.buildSessionFactory(new StandardServiceRegistryBuilder().build());
 		} catch (Exception e) {
