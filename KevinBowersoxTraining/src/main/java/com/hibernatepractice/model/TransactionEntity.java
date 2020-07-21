@@ -19,11 +19,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "TRANSACTIONS")
 @Data
 @Builder
+@ToString(exclude = "account")
 @AllArgsConstructor
 @NoArgsConstructor
 public class TransactionEntity {
