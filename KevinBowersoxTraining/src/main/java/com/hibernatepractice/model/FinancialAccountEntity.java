@@ -18,6 +18,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
@@ -27,12 +29,17 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+@Entity(name = "accounts")
 @Table(name = "FINANCIAL_ACCOUNT")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@NamedQueries({
+		@NamedQuery(name = "transactionAccounts", query = "select t.account " + "from transactions t "
+				+ "where t.transactionAmount > 500.00 " + "and t.transactionType = 'Credit'"),
+		@NamedQuery(name = "accountDetails", query = "select distinct a from transactions t " + "join t.account a "
+				+ "where t.transactionAmount> :amount " + "and t.transactionType = 'Credit'") })
 public class FinancialAccountEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "userTableGen")
@@ -47,11 +54,11 @@ public class FinancialAccountEntity {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
 			CascadeType.REFRESH })
 	@JoinColumn(name = "BANK_ID", referencedColumnName = "BANK_ID", updatable = true)
-	private BankEntity bankId;
+	private BankEntity bank;
 
 	@Column(name = "ACCOUNT_NAME")
 	private String accountName;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(name = "ACCOUNT_TYPE")
 	private AccountType accountType;

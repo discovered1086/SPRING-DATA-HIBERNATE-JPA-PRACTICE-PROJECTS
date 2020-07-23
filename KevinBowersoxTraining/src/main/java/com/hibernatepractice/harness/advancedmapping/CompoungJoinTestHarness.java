@@ -30,7 +30,7 @@ public class CompoungJoinTestHarness {
 					.transactionNotes("Shoe purchase").currency(currencyEntity).build();
 
 			FinancialAccountEntity account = FinancialAccountEntity.builder().accountName("BOA Account")
-					.accountTypeId("3").bankId(bank).createdBy("Kingshuk Mukherjee").createdDate(LocalDateTime.now())
+					.accountTypeId("3").bank(bank).createdBy("Kingshuk Mukherjee").createdDate(LocalDateTime.now())
 					.currentBalance(BigDecimal.valueOf(10000.00)).openedDate(LocalDateTime.now())
 					.transactions(Arrays.asList(transaction1)).build();
 

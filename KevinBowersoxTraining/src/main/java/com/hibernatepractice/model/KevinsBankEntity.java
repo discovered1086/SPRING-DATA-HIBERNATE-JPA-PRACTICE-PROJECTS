@@ -39,7 +39,7 @@ public class KevinsBankEntity {
 	@TableGenerator(name = "userTableGen", table = "USER_TABLE_GENERATOR", 
 					pkColumnName = "IDENTIFIER_NAME", valueColumnName = "IDENTIFIER_VALUE")
 	@Column(name = "BANK_ID")
-	private Long bankId;
+	private Long bank;
 	
 	@Column(name = "NAME")
 	private String name;

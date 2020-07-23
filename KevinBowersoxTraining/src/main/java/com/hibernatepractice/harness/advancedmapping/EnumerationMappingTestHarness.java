@@ -20,7 +20,7 @@ public class EnumerationMappingTestHarness {
 			BankEntity bank = session.get(BankEntity.class, 1l);
 
 			FinancialAccountEntity account = FinancialAccountEntity.builder().accountName("Santander Account")
-					.accountTypeId("3").bankId(bank).accountType(AccountType.MONEY_MARKET).createdBy("Kingshuk Mukherjee")
+					.accountTypeId("3").bank(bank).accountType(AccountType.MONEY_MARKET).createdBy("Kingshuk Mukherjee")
 					.createdDate(LocalDateTime.now()).currentBalance(BigDecimal.valueOf(10000.00))
 					.openedDate(LocalDateTime.now()).build();
 
