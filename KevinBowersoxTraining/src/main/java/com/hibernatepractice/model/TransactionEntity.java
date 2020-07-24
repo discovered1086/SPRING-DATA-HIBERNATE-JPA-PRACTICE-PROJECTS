@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,7 +37,7 @@ public class TransactionEntity {
 	@Column(name = "TRANSACTION_ID")
 	private long transactionId;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ACCOUNT_ID")
 	private FinancialAccountEntity account;
 
@@ -49,7 +50,7 @@ public class TransactionEntity {
 	@Column(name = "LAST_UPDATED_DATE")
 	private LocalDateTime lastUpdatedDate;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumns({
 		@JoinColumn(name = "CURRENCY_NM", referencedColumnName = "CRR_NM"),
 		@JoinColumn(name = "CNTRY_NM", referencedColumnName = "CNTRY_NM")

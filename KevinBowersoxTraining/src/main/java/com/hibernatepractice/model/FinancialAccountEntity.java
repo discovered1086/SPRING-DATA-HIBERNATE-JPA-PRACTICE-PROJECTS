@@ -51,8 +51,7 @@ public class FinancialAccountEntity {
 	@JoinTable(name = "USER_ACCOUNTS", joinColumns = @JoinColumn(name = "ACCOUNT_ID", referencedColumnName = "ACCOUNT_ID"), inverseJoinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID"))
 	private Set<ComplexUser> users;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
-			CascadeType.REFRESH })
+	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
 	@JoinColumn(name = "BANK_ID", referencedColumnName = "BANK_ID", updatable = true)
 	private BankEntity bank;
 

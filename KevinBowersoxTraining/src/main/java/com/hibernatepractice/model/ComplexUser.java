@@ -54,7 +54,7 @@ public class ComplexUser {
 	@Column(name = "DATE_OF_BIRTH")
 	private LocalDate dob;
 	
-	@ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+	@ManyToMany(mappedBy = "users")
 	private Set<FinancialAccountEntity> accounts;
 	
 	@OneToOne(mappedBy = "user", fetch = FetchType.LAZY)

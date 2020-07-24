@@ -1,16 +1,16 @@
-package com.hibernatepractice.harness.queryingdata;
-
-import java.math.BigDecimal;
-import java.util.List;
+package com.hibernatepractice.harness.queryingdata.criteriaapi;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
-import com.hibernatepractice.model.FinancialAccountEntity;
+import com.hibernatepractice.model.TransactionEntity;
 
-public class JPANamedQueryHarness {
+public class JPACriteriaSimpleSelectQueryHarness {
 
 	public static void main(String[] args) {
 		EntityManagerFactory entityManagerFactory = null;
@@ -24,12 +24,20 @@ public class JPANamedQueryHarness {
 			transaction = entityManager.getTransaction();
 			transaction.begin();
 
-			List<FinancialAccountEntity> resultList = entityManager
-					.createNamedQuery("accountDetails", FinancialAccountEntity.class)
-					.setParameter("amount", BigDecimal.valueOf(200.00))
-					.getResultList();
-			
-			resultList.forEach(System.out::println);
+			// Create the criteria query
+			CriteriaQuery<TransactionEntity> query = entityManager.getCriteriaBuilder()
+					.createQuery(TransactionEntity.class);
+
+			// Create the root
+			Root<TransactionEntity> root = query.from(TransactionEntity.class);
+
+			// Add the root to the query for facilitating select. This is basically
+			// saying select all the fields in the transaction entity
+			query.select(root);
+
+			TypedQuery<TransactionEntity> typedQuery = entityManager.createQuery(query);
+
+			typedQuery.getResultList().forEach(System.out::println);
 
 			transaction.commit();
 

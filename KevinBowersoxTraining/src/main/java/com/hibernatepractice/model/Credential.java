@@ -3,6 +3,7 @@ package com.hibernatepractice.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ public class Credential {
 	@Column(name = "CREDENTIAL_ID")
 	private long credentialId;
 	
-	@OneToOne(cascade =  CascadeType.ALL)
+	@OneToOne(cascade =  CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
 	private ComplexUser user;
 	
