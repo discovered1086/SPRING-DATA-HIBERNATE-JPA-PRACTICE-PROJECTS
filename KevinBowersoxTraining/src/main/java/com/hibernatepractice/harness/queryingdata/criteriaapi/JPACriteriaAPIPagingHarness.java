@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
@@ -27,8 +28,11 @@ public class JPACriteriaAPIPagingHarness {
 			int pageNumber=2;
 			int pageSize = 3;
 
+			// Create the criteria builder
+			CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+			
 			// Create the criteria query
-			CriteriaQuery<TransactionEntity> query = entityManager.getCriteriaBuilder()
+			CriteriaQuery<TransactionEntity> query = criteriaBuilder
 					.createQuery(TransactionEntity.class);
 
 			// Create the root
