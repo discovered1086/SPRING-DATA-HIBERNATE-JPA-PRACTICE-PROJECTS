@@ -23,7 +23,7 @@ public class BankAccountScenarioFirstHarness {
 			ObjectMapper objectMapper = new ObjectMapper();
 			
 			BankAccount bankAccount = objectMapper.readValue(
-					new File("jsonfiles/BankAccount.json"), BankAccount.class);
+					new File("jsonFiles/BankAccount.json"), BankAccount.class);
 
 			// Begin the transaction
 			theTransaction = session.beginTransaction();
