@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.1.4.RELEASE'
+	id 'org.springframework.boot' version '2.3.8.RELEASE'
 	id 'java'
 }
 
@@ -20,7 +20,9 @@ dependencies {
 	
 	compile ("com.oracle:ojdbc7:12.1.0.1")
 	
-	compile group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
+	compile group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
+	testCompile group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
+	annotationProcessor 'org.projectlombok:lombok:1.18.16'
 	
 	// https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator
 	compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.0.16.Final'
@@ -30,5 +32,11 @@ dependencies {
 	
 	// https://mvnrepository.com/artifact/org.glassfish/javax.el
 	compile group: 'org.glassfish', name: 'javax.el', version: '3.0.0'
+
+	// https://mvnrepository.com/artifact/com.openpojo/openpojo
+	testCompile group: 'com.openpojo', name: 'openpojo', version: '0.8.13'
+
+	// https://mvnrepository.com/artifact/com.openpojo/openpojo
+	compile group: 'com.openpojo', name: 'openpojo', version: '0.8.13'
 	
 }

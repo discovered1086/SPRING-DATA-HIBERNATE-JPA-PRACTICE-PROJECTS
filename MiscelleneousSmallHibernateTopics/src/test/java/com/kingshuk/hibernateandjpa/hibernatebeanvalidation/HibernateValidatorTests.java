@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
+import com.kingshuk.hibernateandjpa.softdelete.HibernateSoftDeleteValidationTests;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.junit.After;
@@ -17,6 +18,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.kingshuk.hibernateandjpa.hibernatebeanvalidation.model.Account;
@@ -31,9 +34,9 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @RunWith(SpringRunner.class)
-//@SpringBootTest
-@Slf4j
 public class HibernateValidatorTests {
+
+	private final Logger log = LoggerFactory.getLogger(HibernateValidatorTests.class);
 
 	private SessionFactory sessionFactory;
 
@@ -63,7 +66,6 @@ public class HibernateValidatorTests {
 
 	@Test
 	public void testConstraintViolationWithBlankAccountNumber() {
-		log.info("Starting bean validation......");
 
 		EntityManager entityManager = sessionFactory.createEntityManager();
 
@@ -84,8 +86,6 @@ public class HibernateValidatorTests {
 	
 	@Test
 	public void testConstraintViolationWithLargerAccountNumber() {
-		log.info("Starting bean validation......");
-
 		EntityManager entityManager = sessionFactory.createEntityManager();
 
 		entityManager.getTransaction().begin();
@@ -105,8 +105,6 @@ public class HibernateValidatorTests {
 
 	@Test
 	public void testConstraintViolationWithOutExpectedExceptionClass() {
-		log.info("Starting bean validation......");
-
 		EntityManager entityManager = sessionFactory.createEntityManager();
 
 		entityManager.getTransaction().begin();

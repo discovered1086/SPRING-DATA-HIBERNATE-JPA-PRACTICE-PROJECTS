@@ -27,8 +27,6 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @RunWith(SpringRunner.class)
-//@SpringBootTest
-@Slf4j
 public class MappingAssocationWithoutMappedAttributeTest {
 
 	private SessionFactory sessionFactory;
@@ -60,8 +58,6 @@ public class MappingAssocationWithoutMappedAttributeTest {
 
 	@Test
 	public void testAuthorBookWithTypedQuery() {
-		log.info("Starting bean validation......");
-
 		EntityManager entityManager = sessionFactory.createEntityManager();
 
 		entityManager.getTransaction().begin();

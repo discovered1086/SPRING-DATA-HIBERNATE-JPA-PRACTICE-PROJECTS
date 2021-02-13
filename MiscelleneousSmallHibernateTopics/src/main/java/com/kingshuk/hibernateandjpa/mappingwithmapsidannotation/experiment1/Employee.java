@@ -1,4 +1,4 @@
-package com.kingshuk.hibernateandjpa.mappingwithmapsidannotation;
+package com.kingshuk.hibernateandjpa.mappingwithmapsidannotation.experiment1;
 
 import org.hibernate.annotations.DynamicInsert;
 
