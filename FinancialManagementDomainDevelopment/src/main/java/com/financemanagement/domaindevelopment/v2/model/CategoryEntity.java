@@ -1,4 +1,4 @@
-package com.financemanagement.domaindevelopment.compositekeymapping.models;
+package com.financemanagement.domaindevelopment.v2.model;
 
 import java.io.Serializable;
 import java.time.ZonedDateTime;
@@ -72,14 +72,14 @@ public class CategoryEntity implements Serializable {
 	@Column(length = 100, name = "CTGRY_DESC")
 	private String categoryDescription;
 
-	@Column(name = "CTGRY_EFFCTV_DT")
+	@Column(name = "CTGRY_EFFCTV_DT", columnDefinition = "TIMESTAMP WITH TIME ZONE")
 	@Type(type = "org.hibernate.type.ZonedDateTimeType")
 	@FutureOrPresent(message = "Category effective date must not be a past date")
 	@JsonSerialize(using = DateTimeSerializer.class)
 	@JsonDeserialize(using = DateTimeDeSerializer.class)
 	private ZonedDateTime categoryEffectiveDate;
 
-	@Column(name = "CTGRY_TRMNTN_DT")
+	@Column(name = "CTGRY_TRMNTN_DT", columnDefinition = "TIMESTAMP WITH TIME ZONE")
 	@Type(type = "org.hibernate.type.ZonedDateTimeType")
 	@JsonInclude(value = JsonInclude.Include.NON_NULL)
 	@JsonSerialize(using = DateTimeSerializer.class)
