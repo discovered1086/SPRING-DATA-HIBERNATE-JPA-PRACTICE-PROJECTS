@@ -72,6 +72,8 @@ public class TransactionTestRunner implements CommandLineRunner {
 				.transactionMethodEffectiveDate(OffsetDateTime.now())
 				.build();
 
+		repository.saveEntity(methodEntity);
+
 		transactionEntity.setTransactionMethod(methodEntity);
 
 		Map<AccountTransactionType, AccountTransactionHelperEntity> accountTransactionMap = new HashMap<>();
