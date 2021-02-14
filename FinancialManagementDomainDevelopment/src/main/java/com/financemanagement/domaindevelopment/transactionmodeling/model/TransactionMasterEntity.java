@@ -44,7 +44,8 @@ public class TransactionMasterEntity implements Serializable {
 	@Version
 	private int version;
 
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
+	//@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
+	@ManyToOne
 	@JoinColumn(name = "TRNSCTN_MTHD_CD", referencedColumnName = "TRNSCTN_MTHD_CD", nullable = false)
 	private TransactionMethodEntity transactionMethod;
 
