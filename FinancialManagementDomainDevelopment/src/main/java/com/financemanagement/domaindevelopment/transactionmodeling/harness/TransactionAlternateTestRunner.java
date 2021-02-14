@@ -1,7 +1,9 @@
 package com.financemanagement.domaindevelopment.transactionmodeling.harness;
 
 import com.financemanagement.domaindevelopment.transactionmodeling.dao.TransactionTestRepository;
-import com.financemanagement.domaindevelopment.transactionmodeling.model.v3.*;
+import com.financemanagement.domaindevelopment.transactionmodeling.model.v3.CountryEntity;
+import com.financemanagement.domaindevelopment.transactionmodeling.model.v3.CurrencyEntity;
+import com.financemanagement.domaindevelopment.transactionmodeling.model.v4.*;
 import com.financemanagement.domaindevelopment.v2.model.enums.TransactionTypeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -11,24 +13,22 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
 @Component
-@Profile("transaction-test-runner")
-public class TransactionTestRunner implements CommandLineRunner {
+@Profile("transaction-test-runner-v2")
+public class TransactionAlternateTestRunner implements CommandLineRunner {
 
 	@Autowired
 	private TransactionTestRepository repository;
 
 	@Override
 	public void run(String... args) throws Exception {
-		final TransactionMasterEntity transactionEntity = TransactionMasterEntity.builder()
+		final TransactionMasterAlternateEntity transactionEntity = TransactionMasterAlternateEntity.builder()
 				.transactionDescription("Purchasing wallet from ebay")
 				.transactionNotes("Online purchase")
 				.build();
 
-		final TransactionCategoryEntity categoryEntity = TransactionCategoryEntity.builder()
+		final TransactionCategoryAlternateEntity categoryEntity = TransactionCategoryAlternateEntity.builder()
 				.transactionCategory("CTGRY15465")
 				.transactionSubCategory("SBCTRGY1654654")
 				.parentTransaction(transactionEntity)
@@ -52,7 +52,9 @@ public class TransactionTestRunner implements CommandLineRunner {
 
 		currencyEntity.setCountry(country);
 
-		final TransactionLocationEntity locationEntity = TransactionLocationEntity.builder()
+		repository.saveEntity(currencyEntity);
+
+		final TransactionLocationAlternateEntity locationEntity = TransactionLocationAlternateEntity.builder()
 				.timeZoneId("America/Chicago")
 				.country(country)
 				.transactionMasterEntity(transactionEntity)
@@ -62,9 +64,7 @@ public class TransactionTestRunner implements CommandLineRunner {
 
 		transactionEntity.setTransactionLocation(locationEntity);
 
-		repository.saveEntity(currencyEntity);
-
-		final TransactionMethodEntity methodEntity = TransactionMethodEntity.builder()
+		final TransactionTypeAlternateEntity methodEntity = TransactionTypeAlternateEntity.builder()
 				.transactionMethodCode("CRD_TRN")
 				.typeOfTransaction(TransactionTypeEnum.EXPENSE)
 				.transactionMethodDefinition("Credit Card Transaction")
@@ -73,22 +73,18 @@ public class TransactionTestRunner implements CommandLineRunner {
 
 		repository.saveEntity(methodEntity);
 
-		transactionEntity.setTransactionMethod(methodEntity);
-
-		Map<AccountTransactionType, AccountTransactionHelperEntity> accountTransactionMap = new HashMap<>();
-		accountTransactionMap.put(AccountTransactionType.SOURCE_ACCOUNT, AccountTransactionHelperEntity.builder()
+		final AccountTransactionAlternateEntity account = AccountTransactionAlternateEntity.builder()
 				.transactionAmount(BigDecimal.valueOf(105.23))
 				.transactionDate(OffsetDateTime.now())
+				.transactionMethod(methodEntity)
 				.transactionAccountId("ACCT578458458")
-				.transactionCurrency(currencyEntity)
-				.build());
-
-		final AccountTransactionEntity accountTransactionEntity = AccountTransactionEntity.builder()
 				.transactionMasterEntity(transactionEntity)
-				.accountTransactions(accountTransactionMap)
+				.transactionCurrency(currencyEntity)
 				.build();
 
-		repository.saveEntity(accountTransactionEntity);
+		transactionEntity.setAccountTransactions(Collections.singleton(account));
+
+		repository.saveEntity(transactionEntity);
 	}
 
 }

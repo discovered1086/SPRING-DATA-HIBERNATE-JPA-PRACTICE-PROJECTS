@@ -1,5 +1,6 @@
-package com.financemanagement.domaindevelopment.transactionmodeling.model;
+package com.financemanagement.domaindevelopment.transactionmodeling.model.v4;
 
+import com.financemanagement.domaindevelopment.transactionmodeling.model.v3.CountryEntity;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -8,7 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity(name = "transactionLocation")
-@Table(name = "TRANSACTION_LOCATION_V3")
+@Table(name = "TRANSACTION_LOCATION_V4")
 @NoArgsConstructor
 @Builder
 @Data
@@ -16,7 +17,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @DynamicInsert
 @DynamicUpdate
-public class TransactionLocationEntity implements Serializable{
+public class TransactionLocationAlternateEntity implements Serializable{
 	
 	/**
 	 * 
@@ -43,6 +44,6 @@ public class TransactionLocationEntity implements Serializable{
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "TRNSCTN_ID", nullable = false)
 	@MapsId
-	private TransactionMasterEntity transactionMasterEntity;
+	private TransactionMasterAlternateEntity transactionMasterEntity;
 
 }

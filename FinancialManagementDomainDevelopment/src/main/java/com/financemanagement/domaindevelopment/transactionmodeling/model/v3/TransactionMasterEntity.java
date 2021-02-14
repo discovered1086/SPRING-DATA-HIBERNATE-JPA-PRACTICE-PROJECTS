@@ -1,4 +1,4 @@
-package com.financemanagement.domaindevelopment.transactionmodeling.model;
+package com.financemanagement.domaindevelopment.transactionmodeling.model.v3;
 
 import com.financemanagement.domaindevelopment.sequencegenerators.newsequences.CommonSequenceGenerator;
 import lombok.AllArgsConstructor;

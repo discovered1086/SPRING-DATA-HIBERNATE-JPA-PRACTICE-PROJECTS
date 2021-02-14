@@ -11,20 +11,26 @@ import javax.persistence.EntityManager;
 @Repository
 public class TransactionTestRepository {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private EntityManager entityManager;
 
     @Transactional
     public <T> void saveEntity(T entity){
-        logger.info("Entity being saved: "+ entity);
+        logger.info("Entity being saved: {}", entity);
         entityManager.persist(entity);
     }
 
     @Transactional
     public <T> void mergeEntity(T entity){
-        logger.info("Entity being merged: "+ entity);
+        logger.info("Entity being merged: {}", entity);
         entityManager.merge(entity);
+    }
+
+    @Transactional
+    public <T> T getEntity(String id, Class<T> tClass){
+        logger.info("Entity being searched is: {}", id);
+        return entityManager.find(tClass, id);
     }
 }
