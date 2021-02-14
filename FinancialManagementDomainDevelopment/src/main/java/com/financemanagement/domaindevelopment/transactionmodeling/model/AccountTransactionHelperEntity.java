@@ -21,7 +21,6 @@ import java.time.OffsetDateTime;
 @NoArgsConstructor
 @Builder
 @Data
-
 @AllArgsConstructor
 @DynamicInsert
 @DynamicUpdate

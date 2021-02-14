@@ -9,8 +9,8 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-@Entity(name = "transaction")
-@Table(name = "TRANSACTION_MASTER")
+@Entity
+@Table(name = "ACCOUNT_TRANSACTION")
 @NoArgsConstructor
 @Builder
 @Data
@@ -38,7 +38,7 @@ public class AccountTransactionEntity implements Serializable {
 	private int version;
 
 	@ElementCollection
-	@CollectionTable(name = "ACCOUNT_TRANSACTION",
+	@CollectionTable(name = "ACCOUNT_TRANSACTION_DETAILS",
 					joinColumns = @JoinColumn(name = "TRN_ID"
 							      , referencedColumnName = "TRNSCTN_ID"))
 	@MapKeyColumn(name = "ACCT_TRSCTN_TYPE")

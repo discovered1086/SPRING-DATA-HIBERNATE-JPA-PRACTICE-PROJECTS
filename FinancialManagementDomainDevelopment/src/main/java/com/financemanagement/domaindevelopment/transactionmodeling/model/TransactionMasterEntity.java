@@ -18,7 +18,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity(name = "transaction")
-@Table(name = "TRANSACTION_MASTER")
+@Table(name = "TRANSACTION_MASTER_V3")
 @NoArgsConstructor
 @Builder
 @Data

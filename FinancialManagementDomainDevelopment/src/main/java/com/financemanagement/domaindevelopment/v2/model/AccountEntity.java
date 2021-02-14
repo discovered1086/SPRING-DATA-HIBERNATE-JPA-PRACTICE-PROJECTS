@@ -1,31 +1,17 @@
 package com.financemanagement.domaindevelopment.v2.model;
 
-import java.io.Serializable;
-import java.time.ZonedDateTime;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
+import com.financemanagement.domaindevelopment.sequencegenerators.CommonSequenceGenerator;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 
-import com.financemanagement.domaindevelopment.sequencegenerators.CommonSequenceGenerator;
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.ZonedDateTime;
 
 @Entity
-@Table(name = "CUSTOMER_ACCOUNT")
+@Table(name = "CUSTOMER_ACCOUNT_V2")
 @ToString
 @EqualsAndHashCode(exclude = "accountId")
 @Builder

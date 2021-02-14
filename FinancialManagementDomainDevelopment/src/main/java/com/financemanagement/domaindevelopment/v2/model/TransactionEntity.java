@@ -19,7 +19,7 @@ import java.time.ZonedDateTime;
 import java.util.Objects;
 
 @Entity(name = "transaction")
-@Table(name = "TRANSACTION_MASTER")
+@Table(name = "TRANSACTION_MASTER_V2")
 @NoArgsConstructor
 @Builder
 @Data

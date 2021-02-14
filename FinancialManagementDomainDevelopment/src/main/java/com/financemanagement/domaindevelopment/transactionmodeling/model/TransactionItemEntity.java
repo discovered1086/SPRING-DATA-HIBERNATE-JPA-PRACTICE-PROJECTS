@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity(name = "transactionItem")
-@Table(name = "TRANSACTION_ITEM")
+@Table(name = "TRANSACTION_ITEM_V3")
 @NoArgsConstructor
 @Builder
 @Data

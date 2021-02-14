@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "CURRENCY")
+@Table(name = "CURRENCY_V3")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

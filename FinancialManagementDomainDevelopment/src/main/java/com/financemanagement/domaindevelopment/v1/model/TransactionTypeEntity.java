@@ -1,21 +1,14 @@
 package com.financemanagement.domaindevelopment.v1.model;
 
-import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import com.financemanagement.domaindevelopment.v1.model.enums.TransactionTypeEnum;
-
 import lombok.Builder;
 import lombok.Data;
 
+import javax.persistence.*;
+import java.io.Serializable;
+
 @Entity
-@Table(name = "TRANSACTION_TYPE")
+@Table(name = "TRANSACTION_TYPE_V1")
 @Data
 @Builder
 public class TransactionTypeEntity implements Serializable{

@@ -1,25 +1,5 @@
 package com.financemanagement.domaindevelopment.v2.model;
 
-import java.io.Serializable;
-import java.time.ZonedDateTime;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Version;
-import javax.validation.constraints.FutureOrPresent;
-import javax.validation.constraints.NotBlank;
-
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
-import org.hibernate.annotations.Type;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -27,14 +7,25 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.financemanagement.domaindevelopment.deserialization.DateTimeDeSerializer;
 import com.financemanagement.domaindevelopment.deserialization.DateTimeSerializer;
 import com.financemanagement.domaindevelopment.sequencegenerators.CommonSequenceGenerator;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.*;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
+import java.time.ZonedDateTime;
+import java.util.Objects;
 
 @Entity
-@Table(name = "FINANCE_SUB_CATEGORY")
+@Table(name = "FINANCE_SUB_CATEGORY_V2")
 @Builder
 @Data
 @NoArgsConstructor

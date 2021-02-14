@@ -34,8 +34,6 @@ public class TransactionTestRunner implements CommandLineRunner {
 				.parentTransaction(transactionEntity)
 				.build();
 
-
-
 		transactionEntity.setTransactionCategory(categoryEntity);
 
 		final CurrencyEntity currencyEntity = CurrencyEntity.builder()
@@ -57,6 +55,7 @@ public class TransactionTestRunner implements CommandLineRunner {
 		final TransactionLocationEntity locationEntity = TransactionLocationEntity.builder()
 				.timeZoneId("America/Chicago")
 				.country(country)
+				.transactionMasterEntity(transactionEntity)
 				.city("Chicago")
 				.region("Buffalo Grove")
 				.build();

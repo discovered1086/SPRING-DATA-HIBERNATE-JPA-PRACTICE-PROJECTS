@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.time.OffsetDateTime;
 
 @Entity
-@Table(name = "TRANSACTION_TYPE")
+@Table(name = "TRANSACTION_TYPE_V3")
 @Getter
 @Setter
 @Builder

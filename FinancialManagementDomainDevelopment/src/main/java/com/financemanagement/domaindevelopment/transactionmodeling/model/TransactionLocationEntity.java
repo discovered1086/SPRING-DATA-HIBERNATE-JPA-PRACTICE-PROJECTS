@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity(name = "transactionLocation")
-@Table(name = "TRANSACTION_LOCATION")
+@Table(name = "TRANSACTION_LOCATION_V3")
 @NoArgsConstructor
 @Builder
 @Data
@@ -24,7 +24,7 @@ public class TransactionLocationEntity implements Serializable{
 	private static final long serialVersionUID = 5251215271446684784L;
 
 	@Id
-	@Column(length = 50, name = "TRNSCTN_ID")
+	@Column(length = 50, name = "TRNSCTN_ID", nullable = false)
 	private String transactionId;
 	
 	@Column(name = "TNSCTN_TMZN_ID",length = 20)
@@ -40,8 +40,8 @@ public class TransactionLocationEntity implements Serializable{
 	@JoinColumn(name = "CNTRY_CD", referencedColumnName = "CNTRY_CD")
 	private CountryEntity country;
 
-	@OneToOne
-	@JoinColumn(columnDefinition = "VARCHAR2(20)", name = "TRNSCTN_ID", referencedColumnName = "TRNSCTN_ID")
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "TRNSCTN_ID", nullable = false)
 	@MapsId
 	private TransactionMasterEntity transactionMasterEntity;
 

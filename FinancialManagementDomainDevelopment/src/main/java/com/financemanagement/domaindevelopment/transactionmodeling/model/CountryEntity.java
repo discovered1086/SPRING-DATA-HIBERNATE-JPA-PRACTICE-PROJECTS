@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Table(name = "COUNTRY")
+@Table(name = "COUNTRY_V3")
 @Builder
 @Data
 @NoArgsConstructor

@@ -6,7 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity(name = "Category")
-@Table(name = "TRANSACTION_CATEGORY")
+@Table(name = "TRANSACTION_CATEGORY_V3")
 @Builder
 @Data
 @ToString(exclude = "parentTransaction")
