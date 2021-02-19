@@ -1,9 +1,6 @@
 package com.financemanagement.domaindevelopment.transactionmodeling.model.v3;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +10,7 @@ import java.util.Set;
 @Table(name = "COUNTRY_V3")
 @Builder
 @Data
+@ToString(exclude = "currencies")
 @NoArgsConstructor
 @AllArgsConstructor
 public class CountryEntity implements Serializable {

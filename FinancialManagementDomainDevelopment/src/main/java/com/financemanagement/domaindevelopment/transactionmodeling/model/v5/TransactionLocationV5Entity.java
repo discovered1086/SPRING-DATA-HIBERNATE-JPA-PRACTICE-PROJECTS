@@ -37,7 +37,7 @@ public class TransactionLocationV5Entity implements Serializable{
 	@Column(name = "TNSCTN_RGN",length = 50)
 	private String region;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CNTRY_CD", referencedColumnName = "CNTRY_CD")
 	private CountryEntity country;
 

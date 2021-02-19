@@ -69,7 +69,7 @@ public class TransactionMasterV5Entity implements Serializable {
 	@CollectionTable(name = "ACCOUNT_TRANSACTION_DETAILS_V5",
 			joinColumns = @JoinColumn(name = "TRN_ID"
 					, referencedColumnName = "TRNSCTN_ID"))
-	@MapKeyClass(TransactionTypeV5Entity.class)
+	@MapKeyJoinColumn(name = "TRNSCTN_TYP_CD",insertable = false, updatable = false, referencedColumnName = "TRNSCTN_TYP_CD")
 	@Builder.Default
 	private Map<TransactionTypeV5Entity, AccountTransactionV5Entity> accountTransactions= new HashMap<>();
 

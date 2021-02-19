@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.HashMap;
 import java.util.Map;
 
 @Component
@@ -26,6 +27,7 @@ public class TransactionInterAccountTestV5Runner implements CommandLineRunner {
         final TransactionMasterV5Entity transactionEntity = TransactionMasterV5Entity.builder()
                 .transactionDescription("Savings to DCU Account")
                 .transactionNotes("Online purchase")
+                .accountTransactions(new HashMap<>())
                 .build();
 
         final TransactionCategoryV5Entity categoryEntity = TransactionCategoryV5Entity.builder()
